@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Categoria extends Model
+{
+    use HasFactory;
+
+    /*TODO: Relación muchos a muchos con la entidad Producto */
+    public function productos(){
+        return $this->belongsToMany(Producto::class)->withTimestamps();
+    }
+
+     /*TODO: Relación inversa con la entidad caracteristica */
+     public function caracteristica(){
+        return $this->belongsTo(Caracteristica::class);
+    }
+}
