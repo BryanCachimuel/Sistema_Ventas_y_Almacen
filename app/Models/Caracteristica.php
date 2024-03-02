@@ -23,4 +23,7 @@ class Caracteristica extends Model
     public function presentacione(){
         return $this->hasOne(Presentacione::class);
     }
+
+    /*TODO: agregando los campos obligatorios de la entidad Caracteristicas */
+    protected $fillable = ['nombre','descripcion'];
 }
