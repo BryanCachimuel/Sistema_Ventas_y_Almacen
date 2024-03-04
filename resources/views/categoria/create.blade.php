@@ -20,7 +20,7 @@
     </ol>
 
     <div class="container w-10 border border-3 border-primary rounded p-4 mt-3">
-        <form action="{{ route('categorias.store') }}" method="post">
+        <form action="{{ route('categorias.store') }}" method="post" autocomplete="off">
             @csrf
             <div class="row g-3">
 
