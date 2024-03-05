@@ -6,6 +6,8 @@ use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
 use App\Models\Caracteristica;
 use App\Models\Categoria;
+use App\Models\Marca;
+use App\Models\Presentacione;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
