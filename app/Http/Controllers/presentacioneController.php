@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoriaRequest;
+use App\Http\Requests\UpdatePresentacioneRequest;
 use App\Models\Caracteristica;
-use App\Models\Categoria;
 use App\Models\Presentacione;
 use Exception;
 use Illuminate\Http\Request;
@@ -73,7 +73,7 @@ class presentacioneController extends Controller
      */
     public function edit(Presentacione $presentacione)
     {
-        dd($presentacione);
+        return view('presentacione.edit',['presentacione'=>$presentacione]);
     }
 
     /**
@@ -83,9 +83,10 @@ class presentacioneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePresentacioneRequest $request, Presentacione $presentacione)
     {
-        //
+        Presentacione::where('id',$presentacione->caracteristica->id)->update($request->validated());
+        return redirect()->route('presentacione.index')->with('success','Presentación Editada');
     }
 
     /**
