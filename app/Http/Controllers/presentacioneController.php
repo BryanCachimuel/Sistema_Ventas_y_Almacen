@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoriaRequest;
 use App\Models\Caracteristica;
+use App\Models\Categoria;
+use App\Models\Presentacione;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +19,8 @@ class presentacioneController extends Controller
      */
     public function index()
     {
-        return view('presentacione.index');
+        $presentaciones = Presentacione::with('caracteristica')->get();
+        return view('presentacione.index',['presentaciones' => $presentaciones]);
     }
 
     /**
@@ -68,9 +71,9 @@ class presentacioneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Presentacione $presentacione)
     {
-        //
+        dd($presentacione);
     }
 
     /**
