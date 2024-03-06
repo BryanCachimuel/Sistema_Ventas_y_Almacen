@@ -63,7 +63,6 @@
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example"> 
                                <form action="{{route('presentaciones.edit',['presentacione'=>$presentacion])}}" method="GET">
-                                @csrf
                                     <button type="submit" class="btn btn-warning">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
