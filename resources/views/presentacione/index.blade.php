@@ -55,7 +55,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                   
+                   @foreach ($presentaciones as $presentacion)
+                       <tr>
+                        <td>{{$presentacion->caracteristica->nombre}}</td>
+                        <td>{{$presentacion->caracteristica->descripcion}}</td>
+                        <td>{{$presentacion->caracteristica->estado}}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example"> 
+                               <form action="{{route('presentaciones.edit',['presentacione'=>$presentacion])}}" method="GET">
+                                @csrf
+                                    <button type="submit" class="btn btn-warning">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                               </form>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                       </tr>
+                   @endforeach
                 </tbody>
             </table>
         </div>
