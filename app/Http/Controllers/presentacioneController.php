@@ -19,7 +19,7 @@ class presentacioneController extends Controller
      */
     public function index()
     {
-        $presentaciones = Presentacione::with('caracteristica')->get();
+        $presentaciones = Presentacione::with('caracteristica')->latest()->get();
         return view('presentacione.index',['presentaciones' => $presentaciones]);
     }
 
@@ -97,6 +97,11 @@ class presentacioneController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $presentacione = Presentacione::find($id);
+        Caracteristica::where('id',$presentacione->caracteristica->id)->update([
+            'estado' => 0
+        ]);
+
+        return redirect()->route('presentaciones.index')->with('success','Presentación Eliminada');
     }
 }
