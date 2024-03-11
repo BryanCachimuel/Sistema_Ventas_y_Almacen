@@ -16,15 +16,15 @@
     </ol>
 
     <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
-        <form action="{{ route('presentaciones.update',['presentacione'=>$presentacione]) }}" method="post" autocomplete="off">
+        <form action="{{ route('presentaciones.update',['presentacione'=>$presentacione]) }}" method="POST" autocomplete="off">
             @method('PATCH')
             @csrf
             <div class="row g-3">
-                <div class="col-md-12">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" id="nombre" value="{{old('nombre',$presentacione->caracteristica->nombre)}}">
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre',$presentacione->caracteristica->nombre)}}">
                     @error('nombre')
-                        <small class="text-danger">{{'*'.$message}}</small>
+                    <small class="text-danger">{{'*'.$message}}</small>
                     @enderror
                 </div>
 
