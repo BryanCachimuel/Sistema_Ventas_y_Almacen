@@ -85,8 +85,8 @@ class presentacioneController extends Controller
      */
     public function update(UpdatePresentacioneRequest $request, Presentacione $presentacione)
     {
-        Presentacione::where('id',$presentacione->caracteristica->id)->update($request->validated());
-        return redirect()->route('presentacione.index')->with('success','Presentación Editada');
+        Caracteristica::where('id',$presentacione->caracteristica->id)->update($request->validated());
+        return redirect()->route('presentaciones.index')->with('success','Presentación Editada');
     }
 
     /**
