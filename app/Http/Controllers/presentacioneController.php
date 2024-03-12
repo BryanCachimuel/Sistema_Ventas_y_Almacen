@@ -97,11 +97,22 @@ class presentacioneController extends Controller
      */
     public function destroy($id)
     {
-        $presentacione = Presentacione::find($id);
-        Caracteristica::where('id',$presentacione->caracteristica->id)->update([
-            'estado' => 0
-        ]);
+        $message = '';
 
-        return redirect()->route('presentaciones.index')->with('success','Presentación Eliminada');
+        $presentacione = Presentacione::find($id);
+        if($presentacione->caracteristica->estado == 1){
+            Caracteristica::where('id',$presentacione->caracteristica->id)->update([
+                'estado' => 0
+            ]);
+            $message = 'Presentación Eliminada';
+        }else{
+            Caracteristica::where('id',$presentacione->caracteristica->id)->update([
+                'estado' => 1
+            ]);
+            $message = 'Presentación Restaurada';
+        }
+        
+
+        return redirect()->route('presentaciones.index')->with('success', $message);
     }
 }
