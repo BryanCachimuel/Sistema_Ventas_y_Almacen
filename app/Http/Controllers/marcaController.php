@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoriaRequest;
+use App\Http\Requests\UpdateMarcaRequest;
 use App\Models\Caracteristica;
+use App\Models\Marca;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +19,8 @@ class marcaController extends Controller
      */
     public function index()
     {
-        return view('marca.index');
+        $marcas = Marca::with('caracteristica')->get();
+        return view('marca.index', ['marcas' => $marcas]);
     }
 
     /**
@@ -68,9 +71,9 @@ class marcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Marca $marca)
     {
-        //
+        return view('marca.edit',['marca'=>$marca]);
     }
 
     /**
@@ -80,9 +83,10 @@ class marcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMarcaRequest $request, Marca $marca)
     {
-        //
+        Caracteristica::where('id',$marca->caracteristica->id)->update($request->validated());
+        return redirect()->route('marcas.index')->with('success','Marca Editada');
     }
 
     /**
