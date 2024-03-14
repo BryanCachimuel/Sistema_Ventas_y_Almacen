@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoriaRequest;
+use App\Models\Caracteristica;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class marcaController extends Controller
 {
@@ -23,7 +27,7 @@ class marcaController extends Controller
      */
     public function create()
     {
-        //
+        return view('marca.create');
     }
 
     /**
@@ -32,9 +36,19 @@ class marcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(StoreCategoriaRequest $request)
+    {   
+        try {
+            DB::beginTransaction();
+            $carateristica = Caracteristica::create($request->validated());
+            $carateristica->marca()->create([
+                'caracteristica_id' => $carateristica->id
+            ]);
+            DB::commit();
+        } catch (Exception $e) {
+           DB::rollBack();
+        }
+        return redirect()->route('marcas.index')->with('success','Marca Registrada');
     }
 
     /**
