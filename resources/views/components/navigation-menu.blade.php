@@ -59,6 +59,10 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-box-archive"></i></div>
                     Presentaciones
                 </a>
+                <a class="nav-link" href="{{ route('marcas.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-copyright"></i></div>
+                    Marcas
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
