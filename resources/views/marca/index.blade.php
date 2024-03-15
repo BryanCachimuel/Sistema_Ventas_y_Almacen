@@ -56,7 +56,13 @@
                             <tr>
                                 <td>{{ $marca->caracteristica->nombre }}</td>
                                 <td>{{ $marca->caracteristica->descripcion }}</td>
-                                <td>{{ $marca->caracteristica->estado }}</td>
+                                <td>
+                                    @if ($marca->caracteristica->estado == 1)
+                                        <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
+                                    @else
+                                        <span class="fw-bolder p-1 rounded bg-warning text-white">Eliminado</span> 
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                         <form action="{{ route('marcas.edit', ['marca' => $marca]) }}" method="get">
@@ -65,15 +71,21 @@
                                             </button>
                                         </form>
 
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarModal">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
+                                        @if ($marca->caracteristica->estado == 1)
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarModal-{{$marca->id}}">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        @else
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#eliminarModal-{{$marca->id}}">
+                                                <i class="fa-solid fa-trash-arrow-up"></i>
+                                            </button>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="eliminarModallLabel"
+                            <div class="modal fade" id="eliminarModal-{{$marca->id}}" tabindex="-1" aria-labelledby="eliminarModallLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -83,12 +95,15 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ¿Está seguro que quieres eliminar la categoría?'
+                                            {{$marca->caracteristica->estado == 1 ? '¿Está seguro que quiere eliminar esta marca?' : '¿Está seguro que quiere restaurar esta la marca?'}}
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger"
-                                                data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary">Confirmar</button>
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                            <form action="{{route('marcas.destroy',['marca'=>$marca->id])}}" method="post">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary">Confirmar</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
