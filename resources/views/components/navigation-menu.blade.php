@@ -60,8 +60,12 @@
                     Presentaciones
                 </a>
                 <a class="nav-link" href="{{ route('marcas.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-copyright"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-tag"></i></div>
                     Marcas
+                </a>
+                <a class="nav-link" href="{{ route('productos.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-brands fa-shopify"></i></div>
+                    Productos
                 </a>
             </div>
         </div>
