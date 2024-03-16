@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Marca;
+use App\Models\Presentacione;
 use Illuminate\Http\Request;
 
 class productoController extends Controller
@@ -22,8 +25,31 @@ class productoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('producto.create');
+    {   
+        /*TODO: se optienen todas las marcas registradas para poderlas filtrar en un input de marcas dentro del 
+        formulario para crear productos 
+        se agrega un join para poder obtener solo las marcas activas
+        */
+        $marcas = Marca::join('caracteristicas as c',
+                              'marcas.caracteristica_id',
+                              '=',
+                              'c.id')
+                              ->where('c.estado',1)->get();
+
+        $presentaciones = Presentacione::join('caracteristicas as c',
+                                              'presentaciones.caracteristica_id',
+                                              '=',
+                                              'c.id')
+                                              ->where('c.estado',1)->get();
+
+        $categorias = Categoria::join('caracteristicas as c',
+                                      'categorias.caracteristica_id',
+                                      '=',
+                                      'c.id')
+                                      ->select('categorias.id as id', 'c.nombre as nombre')
+                                      ->where('c.estado',1)->get();
+
+        return view('producto.create', compact('marcas','presentaciones','categorias'));
     }
 
     /**
