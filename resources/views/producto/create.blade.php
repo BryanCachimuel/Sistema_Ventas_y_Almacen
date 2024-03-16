@@ -23,7 +23,7 @@
     </ol>
 
     <div class="container w-100 border border-3 border-primary rounded p-4 mt-3">
-        <form action="{{route('productos.store')}}" method="post" autocomplete="off">
+        <form action="{{route('productos.store')}}" method="post" autocomplete="off" enctype="multipart/form-data">
             @csrf
             <div class="row g-3">
                 
@@ -71,7 +71,7 @@
                     <label for="marca_id" class="form-label">Marca: </label>
                     <select data-size="4" title="Seleccione una marca" data-live-search="true" name="marca_id" id="marca_id" class="form-control selectpicker show-tick">
                         @foreach($marcas as $marca)
-                            <option value="{{$marca->id}}">{{$marca->caracteristica->nombre}}</option>
+                            <option value="{{$marca->id}}" {{old('marca_id') == $marca->id ? 'selected' : ''}}>{{$marca->nombre}}</option>
                         @endforeach
                     </select>
                     @error('marca_id')
@@ -83,7 +83,7 @@
                     <label for="presentacione_id" class="form-label">Presentaciones: </label>
                     <select data-size="4" title="Seleccione una presentación" data-live-search="true" name="presentacione_id" id="presentacione_id" class="form-control selectpicker show-tick">
                         @foreach($presentaciones as $presentacion)
-                            <option value="{{$presentacion->id}}">{{$presentacion->caracteristica->nombre}}</option>
+                            <option value="{{$presentacion->id}}" {{old('presentacione_id') == $presentacion->id ? 'selected' : ''}}>{{$presentacion->nombre}}</option>
                         @endforeach
                     </select>
                     @error('presentacione_id')
