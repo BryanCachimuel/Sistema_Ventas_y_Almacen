@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductoRequest;
 use App\Models\Categoria;
 use App\Models\Marca;
 use App\Models\Presentacione;
@@ -34,19 +35,21 @@ class productoController extends Controller
                               'marcas.caracteristica_id',
                               '=',
                               'c.id')
+                              ->select('marcas.id as id','c.nombre as nombre')
                               ->where('c.estado',1)->get();
 
         $presentaciones = Presentacione::join('caracteristicas as c',
                                               'presentaciones.caracteristica_id',
                                               '=',
                                               'c.id')
+                                              ->select('presentaciones.id as id','c.nombre as nombre')
                                               ->where('c.estado',1)->get();
 
         $categorias = Categoria::join('caracteristicas as c',
                                       'categorias.caracteristica_id',
                                       '=',
                                       'c.id')
-                                      ->select('categorias.id as id', 'c.nombre as nombre')
+                                      ->select('categorias.id as id','c.nombre as nombre')
                                       ->where('c.estado',1)->get();
 
         return view('producto.create', compact('marcas','presentaciones','categorias'));
@@ -58,9 +61,9 @@ class productoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductoRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**
