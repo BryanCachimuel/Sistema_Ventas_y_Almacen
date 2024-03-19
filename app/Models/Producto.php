@@ -44,9 +44,9 @@ class Producto extends Model
 
     public function handleUploadImage($image){
         $file = $image;
-        $name = time() . $file->getClientOriginalName();
-        //$file->move(public_path() . '/img/productos/', $name);
-        Storage::putFileAs('/public/img/productos/',$file,$name,'public');
+        $name = time().$file->getClientOriginalName();
+        //$file->move(public_path().'/public/img/productos/',$name);
+       Storage::putFileAs('/public/productos/',$file,$name,'public'); 
 
         return $name;
     }
