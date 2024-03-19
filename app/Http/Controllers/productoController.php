@@ -20,7 +20,8 @@ class productoController extends Controller
      */
     public function index()
     {
-        return view('producto.index');
+        $productos = Producto::with(['categorias.caracteristica','marca.caracteristica','presentacione.caracteristica'])->latest()->get();
+        return view('producto.index',compact('productos'));
     }
 
     /**
@@ -81,9 +82,9 @@ class productoController extends Controller
                 'nombre' => $request->nombre,
                 'descripcion' => $request->descripcion,
                 'fecha_vencimiento' => $request->fecha_vencimiento,
-                'img_path' => $name,
                 'marca_id' => $request->marca_id,
-                'presentacione_id' => $request->presentacione_id
+                'presentacione_id' => $request->presentacione_id,
+                'img_path' => $name
             ]);
 
             $producto->save();
@@ -92,13 +93,12 @@ class productoController extends Controller
             $categorias = $request->get('categorias');
             $producto->categorias()->attach($categorias);
 
-
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
         }
 
-        return redirect()->route('productos.index')->with('success', 'Producto registrado');
+        return redirect()->route('productos.index')->with('success', 'Producto Registrado');
     }
 
     /**
