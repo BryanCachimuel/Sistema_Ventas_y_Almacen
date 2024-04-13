@@ -10,6 +10,8 @@ class Producto extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['codigo','nombre','descripcion','fecha_vencimiento','marca_id','presentacione_id','img_path'];
+
     /*TODO: Relación muchos a muchos con la entidad Compra 
       withTimestamps() -> para crear valores de creat_at y update_at
       withPivot() -> columnas con las que cuenta la tabla pivote
@@ -40,13 +42,11 @@ class Producto extends Model
         return $this->belongsTo(Presentacione::class);
     }
 
-    protected $fillable = ['codigo','nombre','descripcion','fecha_vencimiento','marca_id','presentacione_id','img_path'];
-
     public function handleUploadImage($image){
         $file = $image;
         $name = time().$file->getClientOriginalName();
-        //$file->move(public_path().'/public/img/productos/',$name);
-       Storage::putFileAs('/public/productos/',$file,$name,'public'); 
+        $file->move(public_path().'/img/productos/',$name);
+       //Storage::putFileAs('/public/productos/',$file,$name,'public'); 
 
         return $name;
     }
