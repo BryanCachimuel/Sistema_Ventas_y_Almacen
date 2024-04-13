@@ -35,26 +35,20 @@ class productoController extends Controller
         formulario para crear productos 
         se agrega un join para poder obtener solo las marcas activas
         */
-        $marcas = Marca::join('caracteristicas as c',
-                              'marcas.caracteristica_id',
-                              '=',
-                              'c.id')
+        $marcas = Marca::join('caracteristicas as c','marcas.caracteristica_id','=','c.id')
                               ->select('marcas.id as id','c.nombre as nombre')
-                              ->where('c.estado',1)->get();
+                              ->where('c.estado',1)
+                              ->get();
 
-        $presentaciones = Presentacione::join('caracteristicas as c',
-                                              'presentaciones.caracteristica_id',
-                                              '=',
-                                              'c.id')
+        $presentaciones = Presentacione::join('caracteristicas as c','presentaciones.caracteristica_id','=','c.id')
                                               ->select('presentaciones.id as id','c.nombre as nombre')
-                                              ->where('c.estado',1)->get();
+                                              ->where('c.estado',1)
+                                              ->get();
 
-        $categorias = Categoria::join('caracteristicas as c',
-                                      'categorias.caracteristica_id',
-                                      '=',
-                                      'c.id')
+        $categorias = Categoria::join('caracteristicas as c','categorias.caracteristica_id','=','c.id')
                                       ->select('categorias.id as id','c.nombre as nombre')
-                                      ->where('c.estado',1)->get();
+                                      ->where('c.estado',1)
+                                      ->get();
 
         return view('producto.create', compact('marcas','presentaciones','categorias'));
     }
