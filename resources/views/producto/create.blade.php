@@ -22,7 +22,7 @@
     </ol>
 
     <div class="card border-3 border-primary rounded">
-        <form action="{{ route('productos.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{route('productos.store')}}" method="post" enctype="multipart/form-data" autocomplete="off">
             @csrf
             <div class="card-body">
 
@@ -31,7 +31,7 @@
                     <!----Codigo---->
                     <div class="col-md-6">
                         <label for="codigo" class="form-label">Código:</label>
-                        <input type="text" name="codigo" id="codigo" class="form-control" value="{{old('codigo')}}">
+                            <input type="text" name="codigo" id="codigo" class="form-control" value="{{old('codigo')}}">
                         @error('codigo')
                         <small class="text-danger">{{'*'.$message}}</small>
                         @enderror
@@ -40,7 +40,7 @@
                     <!---Nombre---->
                     <div class="col-md-6">
                         <label for="nombre" class="form-label">Nombre:</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}">
+                            <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}">
                         @error('nombre')
                         <small class="text-danger">{{'*'.$message}}</small>
                         @enderror
@@ -49,7 +49,7 @@
                     <!---Descripción---->
                     <div class="col-12">
                         <label for="descripcion" class="form-label">Descripción:</label>
-                        <textarea name="descripcion" id="descripcion" rows="3" class="form-control">{{old('descripcion')}}</textarea>
+                            <textarea name="descripcion" id="descripcion" rows="3" class="form-control">{{old('descripcion')}}</textarea>
                         @error('descripcion')
                         <small class="text-danger">{{'*'.$message}}</small>
                         @enderror
@@ -67,7 +67,7 @@
                     <!---Imagen---->
                     <div class="col-md-6">
                         <label for="img_path" class="form-label">Imagen:</label>
-                        <input type="file" name="img_path" id="img_path" class="form-control" accept="image/*">
+                        <input type="file" name="img_path" id="img_path" class="form-control" accept="image/*" value="{{old('img_path')}}">
                         @error('img_path')
                         <small class="text-danger">{{'*'.$message}}</small>
                         @enderror
