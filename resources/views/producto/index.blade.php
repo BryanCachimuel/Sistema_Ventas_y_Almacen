@@ -62,7 +62,7 @@
                             <td>{{$producto->codigo}}</td>
                             <td>{{$producto->nombre}}</td>
                             <td>{{$producto->marca->caracteristica->nombre}}</td>
-                            <td>{{$producto-presentacione->caracteristica->nombre>}}</td>
+                            <td>{{$item->presentacione->caracteristica->nombre}}</td>
                             <td>
                                 @foreach ($producto->categoria as $ctg)
                                     <div class="container">
@@ -90,7 +90,7 @@
 
                         <!-- Modal para ver -->
                         <div class="modal fade" id="verModal-{{$producto->id}}" tabindex="-1" aria-labelledby="verModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Detalles del Producto</h1>
@@ -111,12 +111,12 @@
                                             </div>
 
                                             <div class="row mb-3">
-                                                <label for="img_path" class="form-label">Imagen: </label>
+                                                <label for="img_path" class="fw-bolder">Imagen: </label>
                                                 <div>
                                                     @if ($producto->img_path != null)
-                                                        <img src="{{Storage::url(''.$producto->img_path)}}" alt="">
+                                                        <img src="{{Storage::url('public/productos/'.$producto->img_path)}}" alt="{{$producto->nombre}}" class="img-fluid img-thumbnail border border-4 rounded">
                                                     @else
-                                                        
+                                                        <img src="" alt="{{$producto->nombre}}">
                                                     @endif
                                                 </div>
                                             </div>
