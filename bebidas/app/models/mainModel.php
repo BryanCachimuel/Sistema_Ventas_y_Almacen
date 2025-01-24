@@ -131,4 +131,12 @@
             return $sql;
         }
 
+        protected function eliminarRegistro($tabla, $campo, $id){
+            $sql = $this->conectar()->prepare("DELETE FROM $tabla WHERE $campo=:id");
+            $sql->bindParam(":id", $id);$sql->execute();
+            
+            $sql->execute();
+            return $sql;
+        }
+
     }
