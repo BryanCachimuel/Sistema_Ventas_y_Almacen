@@ -134,9 +134,28 @@
         protected function eliminarRegistro($tabla, $campo, $id){
             $sql = $this->conectar()->prepare("DELETE FROM $tabla WHERE $campo=:id");
             $sql->bindParam(":id", $id);$sql->execute();
-            
+
             $sql->execute();
             return $sql;
+        }
+
+        protected function paginadorTablas($pagina, $numeroPaginas,$url,$botones){
+            $tabla = '<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">';
+
+            if($pagina <= 1){
+                $tabla .= '
+                    <a class="pagination-previous is-disabled" disabled >Anterior</a>
+                    <ul class="pagination-list">
+                ';
+            }else{
+                $tabla .= '
+                    <a class="pagination-previous" href="'.$url.($pagina-1).'">Anterior</a>
+                    <ul class="pagination-list">
+                        <li><a class="pagination-link" href="'.$url.'1/">1</a></li>
+                        <li><span class="pagination-ellipsis">&hellip;</span></li>
+                ';
+            }
+
         }
 
     }
