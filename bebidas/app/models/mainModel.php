@@ -54,6 +54,7 @@
 
         protected function guardarDatos($tabla, $datos){
             $query = "INSERT INTO $tabla (";
+            
             $C = 0;
             foreach($datos as $clave){
                 if($C >= 1){ 
@@ -100,6 +101,33 @@
                 $sql = $this->conectar()->prepare("SELECT $campo FROM $tabla");
             }
             $sql->execute();
+            return $sql;
+        }
+
+        public function actualizarDatos($tabla, $datos, $condicion){
+            $query = "UPDATE $tabla SET ";
+
+            $C = 0;
+            foreach($datos as $clave){
+                if($C >= 1){ 
+                    $query .= ",";
+                }
+                $query .= $clave["campo_nombre"]."=".$clave["campo_marcador"];
+                $C++;
+            }
+
+            $query .= " WHERE ".$condicion["condicion_campo"]."=".$condicion["condicion_marcador"];
+            
+            $sql = $this->conectar()->prepare($query);
+
+            foreach($datos as $clave){
+                $sql->bindParam($clave["campo_marcador"],$clave["campo_valor"]);
+            }
+
+            $sql->bindParam($condicion["condicion_marcador"],$condicion["condicion_valor"]);
+
+            $sql->execute();
+
             return $sql;
         }
 
