@@ -16,10 +16,33 @@ formularios_ajax.forEach((formularios) => {
       cancelButtonText: "No, cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        
+
+        let data = new FormData(this);
+        let method = this.getAttribute("method");
+        let action = this.getAttribute("action");
+
+        let encabezados = new Headers();
+
+        let config = {
+            method: method,
+            Headers: encabezados,
+            mode: 'cors',
+            cache: 'no-cache',
+            body: data
+        };
+
+        fetch(action, config)
+        .then(respuesta => respuesta.json())
+        .then(respuesta => {
+            return alertas_ajax(respuesta);
+        });
       }
     });
 
   });
 
 });
+
+function alertas_ajax(alerta){
+
+}
