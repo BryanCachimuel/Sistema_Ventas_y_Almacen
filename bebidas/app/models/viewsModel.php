@@ -4,7 +4,7 @@
     class viewsModel {
 
         protected function obtenerVistasModelo($vista){
-            $listaBlanca = ["dashboard"];      // tendra todas las palabras que se van a permitir en la url
+            $listaBlanca = ["dashboard","userNew","userList","userSearch","userUpdate","userPhoto","logoOut"];      // tendra todas las palabras que se van a permitir en la url
 
             if(in_array($vista, $listaBlanca)){
                 // verifica si la vista se encuentra en el directorio content
