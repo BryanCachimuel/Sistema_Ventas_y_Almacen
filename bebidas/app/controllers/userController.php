@@ -66,12 +66,40 @@
 		    	$alerta=[
 					"tipo"=>"simple",
 					"titulo"=>"Ocurrió un error inesperado",
-					"texto"=>"Las CLAVES no coinciden con el formato solicitado",
+					"texto"=>"Las calves no coinciden con el formato solicitado",
 					"icono"=>"error"
 				];
 				return json_encode($alerta);
 		        exit();
 		    }
+
+			// Verificando email
+			if($email != ""){
+				if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+					$check_email = $this->ejecutarConsultas("SELECT usuario_email FROM usuario WHERE usuario_email='$email'");
+
+					if($check_email->rowCount() > 0){
+						$alerta=[
+							"tipo"=>"simple",
+							"titulo"=>"Ocurrió un error inesperado",
+							"texto"=>"El Email que acaba de ingresar ya se encuentra registrado",
+							"icono"=>"error"
+						];
+						return json_encode($alerta);
+						exit();
+					}
+				}
+				else{
+					$alerta=[
+						"tipo"=>"simple",
+						"titulo"=>"Ocurrió un error inesperado",
+						"texto"=>"Ha ingresado un email no valido",
+						"icono"=>"error"
+					];
+					return json_encode($alerta);
+					exit();
+				}
+			}
         }
 
     }
