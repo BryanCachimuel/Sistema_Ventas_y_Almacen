@@ -131,5 +131,8 @@ class userController extends mainModel
 			return json_encode($alerta);
 			exit();
 		}
+
+		// Directorio de imagenes
+		$img_dir = "../views/fotos/";
 	}
 }
