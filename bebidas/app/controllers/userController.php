@@ -134,5 +134,83 @@ class userController extends mainModel
 
 		// Directorio de imagenes
 		$img_dir = "../views/fotos/";
+
+		// Comprobar si se a seleccionado una imagen
+		if($_FILES['usuario_foto']['name'] != "" && $_FILES['usuario_foto']['size'] > 0) {
+			
+			// creando directorio
+			if(!file_exists($img_dir)){
+				if(!mkdir($img_dir,0777)){
+					$alerta = [
+						"tipo" => "simple",
+						"titulo" => "Ocurrió un error inesperado",
+						"texto" => "Error al crear el directorio",
+						"icono" => "error"
+					];
+					return json_encode($alerta);
+					exit();
+				}
+			}
+
+			// verificando formato de imagenes
+			if(mime_content_type($_FILES['usuario_foto']['tmp_name']) != "image/jpeg" && mime_content_type($_FILES['usuario_foto']['tmp_name']) != "image/png"){
+				$alerta = [
+					"tipo" => "simple",
+					"titulo" => "Ocurrió un error inesperado",
+					"texto" => "La imagen que a seleccionado es de un formato no permitido",
+					"icono" => "error"
+				];
+				return json_encode($alerta);
+				exit();
+			}
+
+			// verificando el peso de la imagen
+			if(($_FILES['usuario_foto']['size']/1024) > 5120){
+				$alerta = [
+					"tipo" => "simple",
+					"titulo" => "Ocurrió un error inesperado",
+					"texto" => "La imagen que a seleccionado supera el peso en MB permitido",
+					"icono" => "error"
+				];
+				return json_encode($alerta);
+				exit();
+			}
+
+			// Nombre de la foto
+			$foto = str_ireplace(" ", "_", $nombre);
+			$foto = $foto."_".rand(0,100);
+
+			// extensión de la imagen
+			switch(mime_content_type($_FILES['usuario_foto']['tmp_name'])){
+				case "image/jpeg":
+					$foto = $foto.".jpg";
+					break;
+
+				case "image/png":
+					$foto = $foto.".png";
+					break;
+			}
+
+			chmod($img_dir,0777);  // permisos de lectura y escritura
+
+			// Moviendo imagen al directorio
+			if(!move_uploaded_file($_FILES['usuario_foto']['tmp_name'],$img_dir.$foto)){
+				$alerta = [
+					"tipo" => "simple",
+					"titulo" => "Ocurrió un error inesperado",
+					"texto" => "No podemos subir la imagen al sistemas en este momento",
+					"icono" => "error"
+				];
+				return json_encode($alerta);
+				exit();
+			}
+
+			
+		} else {
+			$foto = "";
+		}
 	}
+
+	
+	
 }
