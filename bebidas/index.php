@@ -27,6 +27,9 @@
 
     <?php 
         use app\controllers\viewsController;
+        use app\controllers\loginController;
+
+        $insLogin = new loginController();
 
         $viewsController = new viewsController(); // se instancia la clase para poder tener acceso a sus métodos
         $vista = $viewsController->obtenerVistasControlador($url[0]);   // accede a la posición cero de la url del navegador
