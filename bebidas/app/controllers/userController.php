@@ -255,6 +255,29 @@ class userController extends mainModel
 		];
 
 		$registrar_usuario = $this->guardarDatos("usuario",$usuario_datos_reg);
+
+		if($registrar_usuario->rowCount() == 1){
+			$alerta = [
+				"tipo" => "limpiar",
+				"titulo" => "Usuario Registrado",
+				"texto" => "El usuario " .$nombre." ".$apellido." se registro con exito",
+				"icono" => "success"
+			];
+		} else {
+			if(is_file($img_dir.$foto)){
+				chmod($img_dir.$foto, 0777);
+				unlink($img_dir.$foto);
+			}
+			$alerta = [
+				"tipo" => "simple",
+				"titulo" => "Ocurrió un error inesperado",
+				"texto" => "No pudo registrar al usuario, intente nuevamente",
+				"icono" => "error"
+			];
+		}
+
+		return json_encode($alerta);
+		
 	}
 
 	
