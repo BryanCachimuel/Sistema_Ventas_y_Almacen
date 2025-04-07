@@ -27,8 +27,8 @@
                     <p class="text-center small">Ingresa tu correo y contraseña para acceder</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  <form class="row g-3 needs-validation" method="POST" action="{{ route('logear') }}" novalidate autocomplete="off">
+                    @csrf
                     <div class="col-12">
                       <label for="email" class="form-label">Correo</label>
                       <div class="input-group has-validation">
@@ -47,6 +47,18 @@
                       <button class="btn btn-primary w-100" type="submit">Inicio Sesión</button>
                     </div>
                   </form>
+                  <!-- Validación que viene de logear -->
+                  <div>
+                    @if ($errors->any())
+                        <p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </p>
+                    @endif
+                  </div>
 
                 </div>
               </div>
