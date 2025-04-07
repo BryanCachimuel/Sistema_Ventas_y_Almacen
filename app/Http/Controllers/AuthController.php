@@ -30,7 +30,7 @@ class AuthController extends Controller
         }
 
         // validar si el usuario está activo
-        if($usuario->activo){
+        if(!$usuario->activo){
             return back()->withErrors(['email' => 'Tu cuenta está inactiva']);
         }
 
@@ -39,5 +39,18 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         return to_route('home');
+    }
+
+    public function crearAdministrador(){
+        // crear directamente un administrador
+        User::create([
+            'name' => 'Bryan LCL',
+            'email' => 'blcl@gmail.com',
+            'password' => Hash::make('admin'),
+            'activo' => true,
+            'rol' => 'admin'
+        ]);
+
+        return "Administrador creado con exito";
     }
 }
