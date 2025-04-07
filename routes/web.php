@@ -11,40 +11,46 @@ use App\Http\Controllers\Ventas;
 use Illuminate\Support\Facades\Route;
 
 // crear un usuario administrador, solo usar una vez
-Route::get('/crear-administrador', [AuthController::class, 'crearAdministrador']);
+//Route::get('/crear-administrador', [AuthController::class, 'crearAdministrador']);
+
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/logear', [AuthController::class, 'logear'])->name('logear');
 
-Route::get('/home', [Dashboard::class, 'index'])->name('home');
+// middleware auth autentifica a un grupo de rutas y las protege para que no se puedan ingresar si un usuario no esta logeado
+Route::middleware("auth")->group(function(){
+    Route::get('/home', [Dashboard::class, 'index'])->name('home');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
 
 // Prefijo para todas las rutas que tengan que ver con ventas
-Route::prefix('ventas')->group(function(){
+Route::prefix('ventas')->middleware("auth")->group(function(){
     Route::get('/nueva-venta', [Ventas::class, 'index'])->name('ventas-nueva');
 });
 
 // Prefijo para todas las rutas que tengan que ver con detalle de ventas
-Route::prefix('detalle')->group(function(){
+Route::prefix('detalle')->middleware("auth")->group(function(){
     Route::get('/detalle-venta', [DetalleVentas::class, 'index'])->name('detalle-venta');
 });
 
 // Prefijo para todas las rutas que tengan que ver con categorias
-Route::prefix('categorias')->group(function(){
+Route::prefix('categorias')->middleware("auth")->group(function(){
     Route::get('/', [Categorias::class, 'index'])->name('categorias');
 });
 
 // Prefijo para todas las rutas que tengan que ver con productos
-Route::prefix('productos')->group(function(){
+Route::prefix('productos')->middleware("auth")->group(function(){
     Route::get('/', [Productos::class, 'index'])->name('productos');
 });
 
 // Prefijo para todas las rutas que tengan que ver con clientes
-Route::prefix('clientes')->group(function(){
+Route::prefix('clientes')->middleware("auth")->group(function(){
     Route::get('/', [Clientes::class, 'index'])->name('clientes');
 });
 
 // Prefijo para todas las rutas que tengan que ver con usuarios
-Route::prefix('usuarios')->group(function(){
+Route::prefix('usuarios')->middleware("auth")->group(function(){
     Route::get('/', [Usuarios::class, 'index'])->name('usuarios');
 });
 
