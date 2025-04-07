@@ -22,23 +22,29 @@ class AuthController extends Controller
         ]);
 
         // buscar si el correo existe en la base de datos
-        $usuario = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
         // validar usuario y contraseña
-        if(!$usuario || !Hash::check($request->password, $usuario->password)){
+        if(!$user || !Hash::check($request->password, $user->password)){
             return back()->withErrors(['email' => 'Credencial Incorrecta'])->withInput();
         }
 
         // validar si el usuario está activo
-        if(!$usuario->activo){
+        if(!$user->activo){
             return back()->withErrors(['email' => 'Tu cuenta está inactiva']);
         }
 
         // crear la sesión de usuario
-        Auth::login($usuario);
+        Auth::login($user);
         $request->session()->regenerate();
 
         return to_route('home');
+    }
+
+    // función para cerrar sesión
+    public function logout(){
+        Auth::logout();
+        return to_route('login');
     }
 
     public function crearAdministrador(){
