@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+     // enum hace que produsca un tipo de catálogo
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -17,6 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('activo')->default(true);
+            $table->enum('rol', ['admin','cajero'])->default('cajero');
             $table->rememberToken();
             $table->timestamps();
         });
