@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\TryCatch;
 
 class Categorias extends Controller
 {
@@ -22,7 +25,8 @@ class Categorias extends Controller
      */
     public function create()
     {
-        //
+        $titulo = 'Crear Categoría';
+        return view('modules.categorias.create', compact('titulo'));
     }
 
     /**
@@ -30,7 +34,15 @@ class Categorias extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $item = new Categoria();
+            $item->user_id = Auth::user()->id;
+            $item->nombre = $request->nombre;
+            $item->save();
+            return to_route(('categorias'));
+        } catch (Exception $e) {
+            return to_route('categorias');
+        }
     }
 
     /**
