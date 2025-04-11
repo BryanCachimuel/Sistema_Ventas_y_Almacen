@@ -18,9 +18,9 @@
             <h5 class="card-title">Administrar Categorías</h5>
             <p>Administrar las categorías de los productos</p>
 
-            <button class="btn btn-primary">
+            <a href="{{ route('categorias.create') }}" class="btn btn-primary">
               <i class='bx bxs-plus-circle'></i> Agregar Nueva Categoría
-            </button>
+            </a>
             <hr>
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -38,7 +38,7 @@
                   </td>
                   <td>
                     <a href="" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-                    <a href="" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+                    <a href="{{ route("categorias.show", $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
                   </td>
                 </tr>
                 @endforeach
