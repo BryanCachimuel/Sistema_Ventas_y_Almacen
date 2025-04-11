@@ -8,6 +8,7 @@ use App\Http\Controllers\DetalleVentas;
 use App\Http\Controllers\Productos;
 use App\Http\Controllers\Usuarios;
 use App\Http\Controllers\Ventas;
+use App\Models\Categoria;
 use Illuminate\Support\Facades\Route;
 
 // crear un usuario administrador, solo usar una vez
@@ -37,6 +38,10 @@ Route::prefix('detalle')->middleware("auth")->group(function(){
 // Prefijo para todas las rutas que tengan que ver con categorias
 Route::prefix('categorias')->middleware("auth")->group(function(){
     Route::get('/', [Categorias::class, 'index'])->name('categorias');
+    Route::get('/create', [Categorias::class, 'create'])->name('categorias.create');
+    Route::post('/store', [Categorias::class, 'store'])->name('categorias.store');
+    Route::get('/show/{id}', [Categorias::class, 'show'])->name('categorias.show');
+    Route::delete('/destroy/{id}', [Categorias::class, 'destroy'])->name('categorias.destroy');
 });
 
 // Prefijo para todas las rutas que tengan que ver con productos
