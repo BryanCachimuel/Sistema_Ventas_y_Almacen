@@ -18,7 +18,7 @@
             <h5 class="card-title">Administrar Usuarios</h5>
             <p>Administrar las cuentas y roles de los Usuarios</p>
 
-            <a href="" class="btn btn-primary">
+            <a href="{{ route("usuarios.create") }}" class="btn btn-primary">
               <i class="fa-solid fa-user-plus"></i> Agregar Nuevo Usuario
             </a>
             <hr>
