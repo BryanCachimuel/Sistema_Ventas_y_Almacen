@@ -37,7 +37,7 @@
                     {{ $item->nombre }}
                   </td>
                   <td>
-                    <a href="" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
+                    <a href="{{ route("categorias.edit", $item->id) }}" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
                     <a href="{{ route("categorias.show", $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
                   </td>
                 </tr>
