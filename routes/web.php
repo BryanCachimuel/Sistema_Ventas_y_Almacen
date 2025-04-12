@@ -41,6 +41,8 @@ Route::prefix('categorias')->middleware("auth")->group(function(){
     Route::get('/create', [Categorias::class, 'create'])->name('categorias.create');
     Route::post('/store', [Categorias::class, 'store'])->name('categorias.store');
     Route::get('/show/{id}', [Categorias::class, 'show'])->name('categorias.show');
+    Route::get('/edit/{id}', [Categorias::class, 'edit'])->name('categorias.edit');
+    Route::put('/update/{id}', [Categorias::class, 'update'])->name('categorias.update');
     Route::delete('/destroy/{id}', [Categorias::class, 'destroy'])->name('categorias.destroy');
 });
 
