@@ -60,7 +60,9 @@ class Categorias extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $titulo = "Editar Categoría";
+        $item = Categoria::find($id);
+        return view('modules.categorias.edit', compact('item','titulo'));
     }
 
     /**
@@ -68,7 +70,10 @@ class Categorias extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Categoria::find($id);
+        $item->nombre = $request->nombre;
+        $item->save();
+        return to_route('categorias');
     }
 
     /**
