@@ -23,16 +23,16 @@
             </a>
             <hr>
             <!-- Table with stripped rows -->
-            <table class="table datatable">
+            <table class="table table-striped">
               <thead>
-                <tr>
+                <tr class="text-center">
                  <th>Nombre Categoría</th>
                  <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($items as $item)
-                <tr>
+                <tr class="text-center">
                   <td>
                     {{ $item->nombre }}
                   </td>
