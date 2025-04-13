@@ -55,8 +55,10 @@ class Usuarios extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    {   
+        $titulo = "Editar Usuario";
+        $item = User::find($id);
+        return view('modules.usuarios.edit', compact('titulo','item'));
     }
 
     /**
@@ -64,7 +66,12 @@ class Usuarios extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = User::find($id);
+        $item->name = $request->name;
+        $item->email = $request->email;
+        $item->rol = $request->rol;
+        $item->save();
+        return to_route('usuarios');
     }
 
     /**
