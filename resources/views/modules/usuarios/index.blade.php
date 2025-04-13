@@ -31,7 +31,7 @@
                  <th>Rol</th>
                  <th>Cambio Contraseña</th>
                  <th>Activo</th>
-                 <th>Acciones</th>
+                 <th>Editar</th>
                 </tr>
               </thead>
               <tbody>
@@ -39,7 +39,13 @@
                 <tr class="text-center">
                   <td>{{ $item->email }}</td>
                   <td>{{ $item->name }}</td>
-                  <td>{{ $item->rol }}</td>
+                  <td>
+                    @if ($item->rol == 'admin')
+                        Administrador
+                    @else
+                        Cajero
+                    @endif
+                  </td>
                   <td>
                     <a href="" class="btn btn-info">
                       <i class="fa-solid fa-user-lock"></i>
@@ -47,14 +53,19 @@
                   </td>
                   <td>
                     @if ($item->activo)
-                      <span class="badge text-bg-success">Activo</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" checked>
+                    </div>
+                    
                     @else
-                      <span class="badge text-bg-warning">Desactivo</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"> 
+                    </div>
+                    
                     @endif
                   </td>
                   <td>
-                    <a href="" class="btn btn-warning"><i class="fa-solid fa-user-pen"></i></a>
-                    <a href="" class="btn btn-danger"><i class="fa-solid fa-user-gear"></i></a>
+                    <a href="{{ route("usuarios.edit", $item->id) }}" class="btn btn-warning"><i class="fa-solid fa-user-pen"></i></a>
                   </td>
                 </tr>
                 @endforeach
