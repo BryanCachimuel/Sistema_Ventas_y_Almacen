@@ -47,6 +47,7 @@
   </section>
 
 </main>
+@include('modules.usuarios.modal_cambiar_password')
 @endsection
 
 @push('scripts')
@@ -74,6 +75,10 @@
             }
           }
         });
+      }
+
+      function agregar_id_usuario(){
+        $('#id_usuario').val(id);
       }
 
       $(document).ready(function(){
