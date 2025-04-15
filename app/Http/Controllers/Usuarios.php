@@ -94,4 +94,11 @@ class Usuarios extends Controller
         $item->activo = $estado;
         return $item->save();
     }
+
+    public function cambio_password($id, $password)
+    {
+        $item = User::find($id);
+        $item->password = Hash::make($password);
+        return $item->save();
+    }
 }
