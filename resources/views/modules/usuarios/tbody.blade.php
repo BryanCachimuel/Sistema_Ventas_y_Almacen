@@ -10,13 +10,13 @@
     @endif
   </td>
   <td>
-    <a href="" class="btn btn-info">
+    <a href="" onclick="agregar_id_usuario({{ $item->id }})" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#cambiar_password">
       <i class="fa-solid fa-user-lock"></i>
     </a>
   </td>
   <td>
     <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" role="switch" id="activo{{ $item->id }}"
+      <input class="form-check-input" type="checkbox" role="switch" id="{{ $item->id }}"
       {{ $item->activo ? 'checked' : '' }}>
     </div>
   </td>
