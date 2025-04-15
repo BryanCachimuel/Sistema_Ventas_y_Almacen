@@ -77,8 +77,25 @@
         });
       }
 
-      function agregar_id_usuario(){
+      function agregar_id_usuario(id){
         $('#id_usuario').val(id);
+      }
+
+      function cambio_password(){
+        let id = $('#id_usuario').val();
+        let password = $('#password').val();
+
+        $.ajax({
+          type : "GET",
+          url : "usuarios/cambiar-password/" + id + "/" + password,
+          success : function(respuesta){
+            if(respuesta == 1){
+              alert("Contraseña actualizada con éxito");
+              $('#frmPassword')[0].reset();
+            }
+          }
+        });
+        return false;
       }
 
       $(document).ready(function(){
