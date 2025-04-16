@@ -102,8 +102,20 @@
           url : "usuarios/cambiar-password/" + id + "/" + password,
           success : function(respuesta){
             if(respuesta == 1){
-              alert("Contraseña actualizada con éxito");
+              Swal.fire({
+                title: 'Exito',
+                text: 'Cambio de contraseña exitoso',
+                icon:'success',
+                confirmButtonText: 'Aceptar'
+              });
               $('#frmPassword')[0].reset();
+            }else{
+              Swal.fire({
+                title: 'Fallo',
+                text: 'Cambio de contraseña no exitoso',
+                icon:'error',
+                confirmButtonText: 'Aceptar'
+              });
             }
           }
         });
