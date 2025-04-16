@@ -70,8 +70,20 @@
           url : "usuarios/cambiar-estado/" + id + "/" + estado,
           success : function(respuesta){
             if(respuesta == 1){
-              alert("Cambio de estado Correcto");
+              Swal.fire({
+                title: 'Exito',
+                text: 'Cambio de estado exitoso',
+                icon:'success',
+                confirmButtonText: 'Aceptar'
+              });
               recargar_tbody();
+            }else{
+              Swal.fire({
+                title: 'Fallo',
+                text: 'No se llevo acabo el cambio',
+                icon:'error',
+                confirmButtonText: 'Aceptar'
+              });
             }
           }
         });
