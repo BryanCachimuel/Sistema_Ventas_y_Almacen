@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proveedor;
+use Exception;
 use Illuminate\Http\Request;
 
 class Proveedores extends Controller
@@ -22,7 +23,8 @@ class Proveedores extends Controller
      */
     public function create()
     {
-        //
+        $titulo = "Crear Proveedores";
+        return view('modules.proveedores.create', compact('titulo'));
     }
 
     /**
@@ -30,7 +32,19 @@ class Proveedores extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $item = new Proveedor();
+            $item->nombre = $request->nombre;
+            $item->telefono = $request->telefono;
+            $item->email = $request->email;
+            $item->codigo_postal = $request->codigo_postal;
+            $item->sitio_web = $request->sitio_web;
+            $item->notas = $request->notas;
+            $item->save();
+            return to_route('proveedores')->with('success','Proveedor Agregado');
+        } catch (Exception $e) {
+            return to_route('proveedores')->with('error','No se pudo guardar' . $e->getMessage());
+        }
     }
 
     /**
