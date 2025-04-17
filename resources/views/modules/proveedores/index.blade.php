@@ -18,7 +18,7 @@
             <h5 class="card-title">Administrar Proveedores</h5>
             <p>Administrar los Proveedores de los productos</p>
 
-            <a href="#" class="btn btn-primary">
+            <a href="{{ route('proveedores.create') }}" class="btn btn-primary">
               <i class='bx bxs-plus-circle'></i> Agregar Nuevo Proveedor
             </a>
             <hr>
