@@ -2,13 +2,12 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Categorias;
-use App\Http\Controllers\Clientes;
+use App\Http\Controllers\Proveedores;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DetalleVentas;
 use App\Http\Controllers\Productos;
 use App\Http\Controllers\Usuarios;
 use App\Http\Controllers\Ventas;
-use App\Models\Categoria;
 use Illuminate\Support\Facades\Route;
 
 // crear un usuario administrador, solo usar una vez
@@ -52,8 +51,8 @@ Route::prefix('productos')->middleware("auth")->group(function(){
 });
 
 // Prefijo para todas las rutas que tengan que ver con clientes
-Route::prefix('clientes')->middleware("auth")->group(function(){
-    Route::get('/', [Clientes::class, 'index'])->name('clientes');
+Route::prefix('proveedores')->middleware("auth")->group(function(){
+    Route::get('/', [Proveedores::class, 'index'])->name('proveedores');
 });
 
 // Prefijo para todas las rutas que tengan que ver con usuarios

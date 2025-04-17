@@ -42,9 +42,9 @@
       </li><!-- End Productos Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route("clientes") }}">
+        <a class="nav-link collapsed" href="{{ route("proveedores") }}">
           <i class='bx bxs-user-detail'></i>
-          <span>Clientes</span>
+          <span>Proveedores</span>
         </a>
       </li><!-- End Clientes Page Nav -->
 
