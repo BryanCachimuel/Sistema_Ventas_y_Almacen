@@ -74,7 +74,7 @@ class Categorias extends Controller
             $item = Categoria::find($id);
             $item->nombre = $request->nombre;
             $item->save();
-            return to_route('categorias')->with('succes', 'Categoría Actualizada');
+            return to_route('categorias')->with('success', 'Categoría Actualizada');
         } catch (Exception $e) {
             return to_route('categorias')->with('error', 'No se pudo actualizar' . $e->getMessage());
         }

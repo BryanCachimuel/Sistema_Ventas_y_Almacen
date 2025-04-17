@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,6 +33,7 @@ class Usuarios extends Controller
      */
     public function store(Request $request)
     {
+       try {
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -39,8 +41,10 @@ class Usuarios extends Controller
             'activo' => true,
             'rol' => $request->rol
         ]);
-
-        return to_route('usuarios');
+        return to_route('usuarios')->with('success','Usuario Guardado con Éxito');
+       } catch (Exception $e) {
+        return to_route('usuarios')->with('error','Error al guardar usuario' . $e->getMessage());
+       }
     }
 
     /**
@@ -66,12 +70,16 @@ class Usuarios extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = User::find($id);
-        $item->name = $request->name;
-        $item->email = $request->email;
-        $item->rol = $request->rol;
-        $item->save();
-        return to_route('usuarios');
+        try {
+            $item = User::find($id);
+            $item->name = $request->name;
+            $item->email = $request->email;
+            $item->rol = $request->rol;
+            $item->save();
+            return to_route('usuarios')->with('success', 'Usuario Actualizado con Éxito');
+        } catch (Exception $e) {
+            return to_route('usuarios')->with('error','Error al actualizar los datos del usuario' . $e->getMessage());
+        }
     }
 
     /**
