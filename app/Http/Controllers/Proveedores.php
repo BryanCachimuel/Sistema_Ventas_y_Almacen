@@ -60,7 +60,9 @@ class Proveedores extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $titulo = "Editar Proveedor";
+        $item = Proveedor::find($id);
+        return view('modules.proveedores.edit', compact('titulo','item'));
     }
 
     /**
@@ -68,7 +70,7 @@ class Proveedores extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       
     }
 
     /**
