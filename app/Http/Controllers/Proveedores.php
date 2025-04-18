@@ -92,6 +92,12 @@ class Proveedores extends Controller
      */
     public function destroy(string $id)
     {
-       
+        try {
+            $item = Proveedor::find($id);
+            $item->delete();
+            return to_route('proveedores')->with('success','Proveedor Eliminada');
+        } catch (Exception $e) {
+            return to_route('proveedores')->with('error','No sea podido eliminar' . $e->getMessage());
+        }
     }
 }
