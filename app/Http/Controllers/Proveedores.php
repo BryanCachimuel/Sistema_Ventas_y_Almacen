@@ -70,7 +70,19 @@ class Proveedores extends Controller
      */
     public function update(Request $request, string $id)
     {
-       
+        try {
+            $item = Proveedor::find($id);
+            $item->nombre = $request->nombre;
+            $item->telefono = $request->telefono;
+            $item->email = $request->email;
+            $item->codigo_postal = $request->codigo_postal;
+            $item->sitio_web = $request->sitio_web;
+            $item->notas = $request->notas;
+            $item->save();
+            return to_route('proveedores')->with('success', 'Proveedor Actualizado');
+        } catch (Exception $e) {
+            return to_route('proveedores')->with('error', 'No se pudo actualizar' . $e->getMessage());
+        }
     }
 
     /**
