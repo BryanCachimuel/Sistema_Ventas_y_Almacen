@@ -52,7 +52,9 @@ class Proveedores extends Controller
      */
     public function show(string $id)
     {
-        //
+        $titulo = "Eliminar Proveedor";
+        $item = Proveedor::find($id);
+        return view('modules.proveedores.show', compact('titulo','item'));
     }
 
     /**
@@ -90,6 +92,6 @@ class Proveedores extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       
     }
 }
