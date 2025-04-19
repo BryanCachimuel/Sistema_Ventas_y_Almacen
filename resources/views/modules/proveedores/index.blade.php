@@ -45,8 +45,8 @@
                   <td>{{ $item->sitio_web }}</td>
                   <td>{{ $item->notas }}</td>
                   <td>
-                    <a href="#" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-                    <a href="#" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+                    <a href="{{ route("proveedores.edit", $item->id) }}" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
+                    <a href="{{ route("proveedores.show", $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
                   </td>
                 </tr>
                 @endforeach
