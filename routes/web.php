@@ -48,6 +48,8 @@ Route::prefix('categorias')->middleware("auth")->group(function(){
 // Prefijo para todas las rutas que tengan que ver con productos
 Route::prefix('productos')->middleware("auth")->group(function(){
     Route::get('/', [Productos::class, 'index'])->name('productos');
+    Route::get('/create', [Productos::class, 'create'])->name('productos.create');
+    Route::post('/store', [Productos::class, 'store'])->name('productos.store');
 });
 
 // Prefijo para todas las rutas que tengan que ver con clientes
