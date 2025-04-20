@@ -35,11 +35,28 @@
       </li><!-- End Categorias Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route("productos") }}">
-          <i class='bx bx-basket'></i>
-          <span>Productos</span>
+        <a class="nav-link collapsed" data-bs-target="#components-nav-products" data-bs-toggle="collapse" href="#">
+          <i class='bx bx-basket'></i><span>Productos</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
+        <ul id="components-nav-products" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route("productos") }}">
+              <i class="bi bi-circle"></i><span>Administrar Productos</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span>Reportes de Productos</span>
+            </a>
+        </ul>
       </li><!-- End Productos Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="fa-solid fa-cart-plus"></i>
+          <span>Compras</span>
+        </a>
+      </li><!-- End Compras Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route("proveedores") }}">
