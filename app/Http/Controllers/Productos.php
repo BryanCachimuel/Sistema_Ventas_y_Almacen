@@ -72,7 +72,11 @@ class Productos extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $titulo = "Editar Producto";
+        $categorias = Categoria::all();
+        $proveedores = Proveedor::all();
+        $item = Producto::find($id);
+        return view('modules.productos.edit', compact('titulo', 'item', 'categorias','proveedores'));
     }
 
     /**
@@ -80,7 +84,7 @@ class Productos extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**
