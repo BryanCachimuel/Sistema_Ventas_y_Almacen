@@ -113,6 +113,12 @@ class Productos extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $item = Producto::find($id);
+            $item->delete();
+            return to_route('productos')->with('success','Producto eliminado con éxito');
+        } catch (Exception $e) {
+            return to_route('productos')->with('error','No se pudo eliminar el producto' . $e->getMessage());
+        }
     }
 }
