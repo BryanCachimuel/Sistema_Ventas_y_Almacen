@@ -84,7 +84,18 @@ class Productos extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+        try {
+            $item = Producto::find($id);
+            $item->categoria_id = $request->categoria_id;
+            $item->proveedor_id = $request->proveedor_id;
+            $item->nombre = $request->nombre;
+            $item->descripcion = $request->descripcion;
+            $item->precio_venta = $request->precio_venta;
+            $item->save();
+            return to_route('productos')->with('success','Producto actualizado con éxito');
+        } catch (Exception $e) {
+            return to_route('productos')->with('error','No se pudo actualizar el producto' . $e->getMessage());
+        }
     }
 
     /**
