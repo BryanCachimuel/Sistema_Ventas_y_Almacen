@@ -64,7 +64,17 @@ class Productos extends Controller
      */
     public function show(string $id)
     {
-        //
+        $titulo = "Eliminar Producto";
+        $item = Producto::select(
+            'productos.*',
+            'categorias.nombre as nombre_categoria',
+            'proveedores.nombre as nombre_proveedor'
+        )
+        ->join('categorias', 'productos.categoria_id', '=' , 'categorias.id')
+        ->join('proveedores', 'productos.proveedor_id', '=' , 'proveedores.id')
+        ->where('productos.id', $id)
+        ->first();
+        return view('modules.productos.show', compact('titulo','item'));
     }
 
     /**
