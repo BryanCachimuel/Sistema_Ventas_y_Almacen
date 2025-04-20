@@ -52,6 +52,8 @@ Route::prefix('productos')->middleware("auth")->group(function(){
     Route::post('/store', [Productos::class, 'store'])->name('productos.store');
     Route::get('/edit/{id}', [Productos::class, 'edit'])->name('productos.edit');
     Route::put('/update/{id}', [Productos::class, 'update'])->name('productos.update');
+    Route::get('/show/{id}', [Productos::class, 'show'])->name('productos.show');
+    Route::delete('/destroy/{id}', [Productos::class, 'destroy'])->name('productos.destroy');
 });
 
 // Prefijo para todas las rutas que tengan que ver con clientes
