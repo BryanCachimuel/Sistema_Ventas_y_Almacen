@@ -17,12 +17,7 @@
           <div class="card-body">
             <h5 class="card-title">Administrar Productos y Stock</h5>
             <p>Administrar el Stock del Sistema</p>
-            <p>
-              <a href="" class="btn btn-success"> 
-                <i class="fa-solid fa-chart-line"></i> Productos con Stock Mínimo
-              </a>
-            </p>
-            <hr>
+  
             <a href="{{ route("productos.create") }}" class="btn btn-primary">
               <i class='bx bxs-plus-circle'></i> Crear Producto
             </a>
@@ -65,8 +60,8 @@
                     <a href="" class="btn btn-info">Comprar</a>
                   </td>
                   <td>
-                    <a href="" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-                    <a href="" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+                    <a href="{{ route("productos.edit", $item->id) }}" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
+                    <a href="{{ route("productos.show", $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
                   </td>
                 </tr>
                 @endforeach
