@@ -121,4 +121,11 @@ class Productos extends Controller
             return to_route('productos')->with('error','No se pudo eliminar el producto' . $e->getMessage());
         }
     }
+
+    public function estado($id, $estado)
+    {
+        $item = Producto::find($id);
+        $item->activo = $estado;
+        return $item->save();
+    }
 }
