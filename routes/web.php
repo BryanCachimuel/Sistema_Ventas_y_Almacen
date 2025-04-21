@@ -6,6 +6,7 @@ use App\Http\Controllers\Proveedores;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DetalleVentas;
 use App\Http\Controllers\Productos;
+use App\Http\Controllers\ReportesProductos;
 use App\Http\Controllers\Usuarios;
 use App\Http\Controllers\Ventas;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,11 @@ Route::prefix('productos')->middleware("auth")->group(function(){
     Route::get('/show/{id}', [Productos::class, 'show'])->name('productos.show');
     Route::delete('/destroy/{id}', [Productos::class, 'destroy'])->name('productos.destroy');
     Route::get('/cambiar-estado/{id}/{estado}', [Productos::class, 'estado'])->name('productos.estado');
+});
+
+// Prefijo para todas las rutas que tengan que ver con reportes
+Route::prefix('reportes_productos')->middleware("auth")->group(function(){
+    Route::get('/', [ReportesProductos::class, 'index'])->name('reportes_productos');
 });
 
 // Prefijo para todas las rutas que tengan que ver con clientes
