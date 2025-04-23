@@ -57,7 +57,7 @@
                     </div>
                   </td>
                   <td>
-                    <a href="" class="btn btn-info">Comprar</a>
+                    <a href="{{ route("compras.create", $item->id) }}" class="btn btn-info">Comprar</a>
                   </td>
                   <td>
                     <a href="{{ route("productos.edit", $item->id) }}" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
