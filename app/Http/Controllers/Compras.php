@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Compra;
 use App\Models\Producto;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Compras extends Controller
 {
@@ -30,7 +33,22 @@ class Compras extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $item = new Compra();
+            $item->user_id = Auth::user()->id;
+            $item->producto_id = $request->id;
+            $item->cantidad = $request->cantidad;
+            $item->precio_compra = $request->precio_compra;
+            if ($item->save()) {
+                $item = Producto::find($request->id);
+                $item->cantidad = ($item->cantidad + $request->cantidad);
+                $item->precio_compra = $request->precio_compra;
+                $item->save();
+            }
+            return to_route('productos')->with('success', 'Compra exitosa!');
+        } catch (Exception $e) {
+            return to_route('productos')->with('error', 'No pudo comprar!' . $e->getMessage());
+        }
     }
 
     /**
