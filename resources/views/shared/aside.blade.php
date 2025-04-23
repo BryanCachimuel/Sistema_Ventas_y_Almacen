@@ -45,7 +45,7 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{{ route("reportes_productos") }}">
               <i class="bi bi-circle"></i><span>Reportes de Productos</span>
             </a>
         </ul>
