@@ -90,7 +90,7 @@ Route::prefix('usuarios')->middleware("auth")->group(function(){
 // Prefijo para todas las rutas que tengan que ver con las compras
 Route::prefix('compras')->middleware("auth")->group(function(){
     Route::get('/', [Compras::class, 'index'])->name('compras');
-    Route::get('/create/{id_producto}', [Compras::class, 'create'])->name('compras.create');
+    Route::get('/create/{producto_id}', [Compras::class, 'create'])->name('compras.create');
     Route::post('/store', [Compras::class, 'store'])->name('compras.store');
 });
 
