@@ -19,8 +19,8 @@
                 @csrf
                 <input type="text" hidden value="{{ $item->id }}" id="id" name="id">
 
-                <label for="cantidad_producto">Cantidad de Producto</label>
-                <input type="text" class="form-control" name="cantidad_producto" id="cantidad_producto" required>
+                <label for="cantidad">Cantidad de Producto</label>
+                <input type="text" class="form-control" name="cantidad" id="cantidad" required>
 
                 <label for="precio_compra">Precio de Compra</label>
                 <input type="text" class="form-control" name="precio_compra" id="precio_compra" required>
