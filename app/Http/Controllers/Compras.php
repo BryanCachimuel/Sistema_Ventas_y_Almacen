@@ -73,7 +73,17 @@ class Compras extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $titulo = "Actualizar Compras";
+        $item = Compra::select(
+            'compras.*',
+            'users.name as nombre_usuario',
+            'productos.nombre as nombre_producto'
+        )
+        ->join('users', 'compras.user_id', '=', 'users.id')
+        ->join('productos', 'compras.producto_id', '=', 'productos.id')
+        ->where('compras.id', $id)
+        ->first();
+        return view('modules.compras.edit', compact('titulo', 'item'));
     }
 
     /**
