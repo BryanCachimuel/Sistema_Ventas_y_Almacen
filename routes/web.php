@@ -92,6 +92,7 @@ Route::prefix('compras')->middleware("auth")->group(function(){
     Route::get('/', [Compras::class, 'index'])->name('compras');
     Route::get('/create/{producto_id}', [Compras::class, 'create'])->name('compras.create');
     Route::post('/store', [Compras::class, 'store'])->name('compras.store');
+    Route::get('/edit/{id}', [Compras::class, 'edit'])->name('compras.edit');
 });
 
 
