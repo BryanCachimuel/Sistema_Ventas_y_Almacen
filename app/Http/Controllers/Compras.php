@@ -65,7 +65,17 @@ class Compras extends Controller
      */
     public function show(string $id)
     {
-        //
+        $titulo = "Eliminar Compra";
+        $items = Compra::select(
+            'compras.*',
+            'users.name as nombre_usuario',
+            'productos.nombre as nombre_producto'
+        )
+        ->join('users', 'compras.user_id', '=', 'users.id')
+        ->join('productos', 'compras.producto_id', '=', 'productos.id')
+        ->where('compras.id', $id)
+        ->first();
+        return view('modules.compras.show', compact('titulo', 'items'));
     }
 
     /**
