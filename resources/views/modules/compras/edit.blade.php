@@ -15,10 +15,10 @@
           <div class="card-body">
             <h5 class="card-title">Edición de: <span style="color: #0000ff; font-size: 20px;">{{ $item->nombre_producto }}</span></h5>
             
-            <form action="" method="POST">
+            <form action="{{ route("compras.update", $item->id) }}" method="POST">
                 @csrf
-                <input type="text" hidden value="{{ $item->id }}" id="id_compra" name="id_compra">
-
+                @method('PUT')
+                <input type="text" hidden name="producto_id" id="producto_id" value="{{ $item->producto_id }}">
                 <label for="cantidad">Cantidad de Producto</label>
                 <input type="text" class="form-control" name="cantidad" id="cantidad" value="{{ $item->cantidad }}" required>
 
