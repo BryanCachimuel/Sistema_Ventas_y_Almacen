@@ -42,7 +42,7 @@
                   <td>{{ $item->created_at }}</td>
                   <td>
                     <a href="{{ route('compras.edit', $item->id) }}" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-                    <a href="" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+                    <a href="{{ route('compras.show', $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
                   </td>
                 </tr>
                 @endforeach
