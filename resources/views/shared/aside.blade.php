@@ -52,7 +52,7 @@
       </li><!-- End Productos Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{ route('compras') }}">
           <i class="fa-solid fa-cart-plus"></i>
           <span>Compras</span>
         </a>
