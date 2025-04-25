@@ -123,8 +123,21 @@ class Compras extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, Request $request)
     {
-        //
+        try {
+            $item = Compra::find($id);
+            $cantidad_compra = $item->cantidad;
+            if($item->delete()){
+                $item = Producto::find($request->producto_id);
+                $item->cantidad = $item->cantidad - $cantidad_compra;
+                $item->save();
+                return to_route('compras')->with('success', 'Compra eliminada con éxito');
+            }else{
+                return to_route('compras')->with('error', 'Compra no se elimino'); 
+            }
+        } catch (Exception $e) {
+            return to_route('compras')->with('error', 'La compra no se pudo eliminar' . $e->getMessage());
+        }
     }
 }
