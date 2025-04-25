@@ -91,7 +91,23 @@ class Compras extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+           $cantidad_anterior = 0;
+           $item = Compra::find($id); 
+           $cantidad_anterior = $item->cantidad;
+           $item->cantidad = $request->cantidad;
+           $item->precio_compra = $request->precio_compra;
+
+           if($item->save()){
+            $item = Producto::find($request->producto_id);
+            $cantidad_anterior = $item->cantidad - $cantidad_anterior;
+            $item->cantidad = $cantidad_anterior + $request->cantidad;
+            $item->save(); 
+           }
+           return to_route('compras')->with('success','Compra actualizada con éxito');
+        } catch (Exception $e) {
+            return to_route('compras')->with('error','No se pudo actualizar la compra' . $e->getMessage());
+        }
     }
 
     /**
