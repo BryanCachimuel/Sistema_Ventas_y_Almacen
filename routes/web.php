@@ -94,6 +94,8 @@ Route::prefix('compras')->middleware("auth")->group(function(){
     Route::post('/store', [Compras::class, 'store'])->name('compras.store');
     Route::get('/edit/{id}', [Compras::class, 'edit'])->name('compras.edit');
     Route::put('/update/{id}', [Compras::class, 'update'])->name('compras.update');
+    Route::get('/show/{id}', [Compras::class, 'show'])->name('compras.show');
+    Route::delete('/destroy/{id}', [Compras::class, 'destroy'])->name('compras.destroy');
 });
 
 
