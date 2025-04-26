@@ -45,7 +45,9 @@
                   <td>{{ $item->nombre_categoria }}</td>
                   <td>{{ $item->nombre_proveedor }}</td>
                   <td>{{ $item->nombre }}</td>
-                  <td></td>
+                  <td>
+                    <img src="{{ asset('storage/'.$item->imagen_producto) }}" width="50px" height="50px" alt="">
+                  </td>
                   <td>{{ $item->descripcion }}</td>
                   <td>{{ $item->cantidad }}</td>
                   <td>$ {{ $item->precio_venta }}</td>
