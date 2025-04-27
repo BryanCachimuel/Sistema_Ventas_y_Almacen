@@ -88,7 +88,7 @@
 
     @if(session('error'))
       Swal.fire({
-        title: 'Exito',
+        title: 'Error',
         text: '{{session('success')}}',
         icon:'error',
         confirmButtonText: 'Aceptar'
