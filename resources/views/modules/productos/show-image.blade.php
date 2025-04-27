@@ -22,8 +22,8 @@
                 @csrf
                 @method('PUT')
 
-                <label for="archivo">Selecciona la nueva imagen</label>
-                <input type="file" name="archivo" id="archivo" class="form-control">
+                <label for="imagen">Selecciona la nueva imagen</label>
+                <input type="file" name="imagen" id="imagen" class="form-control">
 
                <div class="mt-3">
                 <button class="btn btn-warning">Actualizar Imagen</button>
