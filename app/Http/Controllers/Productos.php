@@ -9,6 +9,8 @@ use App\Models\Proveedor;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Stmt\Return_;
 
 class Productos extends Controller
 {
@@ -156,5 +158,26 @@ class Productos extends Controller
         $titulo = 'Editar Imagen';
         $item = Imagen::find($id);
         return view('modules.productos.show-image', compact('titulo','item'));
+    }
+
+    public function update_image(Request $request, $id){
+        try {
+            $item = Imagen::find($id);
+
+             // eliminar la imagen existente antes de actualizar
+            if($item->ruta && Storage::disk('public')->exists($item->ruta)){
+                Storage::disk('public')->delete($item->ruta);
+            }
+
+            $rutaImagen = $request->file('imagen')->store('imagenes','public');
+
+            $nombreImagen = basename($rutaImagen);
+            $item->ruta = $rutaImagen;
+            $item->nombre = $nombreImagen;
+            $item->save();
+            return to_route('productos')->with('success', 'Actualización de imagen éxitosa');
+        } catch (Exception $e) {
+            return to_route('productos')->with('error', 'No se pudo actualizar la imagen del producto' . $e->getMessage());
+        }
     }
 }
