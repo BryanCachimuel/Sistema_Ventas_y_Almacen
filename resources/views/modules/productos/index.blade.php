@@ -47,6 +47,7 @@
                   <td>{{ $item->nombre }}</td>
                   <td>
                     <img src="{{ asset('storage/'.$item->imagen_producto) }}" width="100px" height="100px" alt="">
+                    <a href="{{ route('productos.show.image', $item->imagen_id) }}" class="badge text-bg-warning"><i class='bx bxs-edit'></i></a>
                   </td>
                   <td>{{ $item->descripcion }}</td>
                   <td>{{ $item->cantidad }}</td>
