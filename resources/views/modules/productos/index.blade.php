@@ -23,10 +23,9 @@
             </a>
             <hr>
             <!-- Table with stripped rows -->
-            <table class="table table-striped">
+            <table class="table datatable">
               <thead>
                 <tr class="text-center">
-                 <th>Categoría</th>
                  <th>Proveedor</th>
                  <th>Nombre</th>
                  <th>Imagen</th>
@@ -42,7 +41,6 @@
               <tbody>
                 @foreach ($items as $item)
                 <tr class="text-center">
-                  <td>{{ $item->nombre_categoria }}</td>
                   <td>{{ $item->nombre_proveedor }}</td>
                   <td>{{ $item->nombre }}</td>
                   <td>
