@@ -66,6 +66,7 @@ Route::prefix('productos')->middleware("auth")->group(function(){
 // Prefijo para todas las rutas que tengan que ver con reportes
 Route::prefix('reportes_productos')->middleware("auth")->group(function(){
     Route::get('/', [ReportesProductos::class, 'index'])->name('reportes_productos');
+    Route::get('/falta-stock', [ReportesProductos::class, 'falta_stock'])->name('reportes_productos.falta_stock');
 });
 
 // Prefijo para todas las rutas que tengan que ver con clientes
