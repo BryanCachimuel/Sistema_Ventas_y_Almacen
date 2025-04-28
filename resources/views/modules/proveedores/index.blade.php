@@ -23,7 +23,7 @@
             </a>
             <hr>
             <!-- Table with stripped rows -->
-            <table class="table table-striped">
+            <table class="table datatable">
               <thead>
                 <tr class="text-center">
                  <th>Nombre</th>
@@ -31,8 +31,8 @@
                  <th>Correo</th>
                  <th>Código Postal</th>
                  <th>Sitio Web</th>
-                 <th>Acciones</th>
                  <th>Nota</th>
+                 <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
