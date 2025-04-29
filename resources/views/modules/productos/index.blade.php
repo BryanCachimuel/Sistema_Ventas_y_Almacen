@@ -27,6 +27,7 @@
               <thead>
                 <tr class="text-center">
                  <th>Proveedor</th>
+                 <th>Código</th>
                  <th>Nombre</th>
                  <th>Imagen</th>
                  <th>Descripción</th>
@@ -40,17 +41,18 @@
               </thead>
               <tbody>
                 @foreach ($items as $item)
-                <tr class="text-center">
-                  <td>{{ $item->nombre_proveedor }}</td>
-                  <td>{{ $item->nombre }}</td>
-                  <td>
+                <tr>
+                  <td class="text-center">{{ $item->nombre_proveedor }}</td>
+                  <td class="text-center">{{ $item->codigo }}</td>
+                  <td class="text-center">{{ $item->nombre }}</td>
+                  <td class="text-center">
                     <img src="{{ asset('storage/'.$item->imagen_producto) }}" width="100px" height="100px" alt="">
                     <a href="{{ route('productos.show.image', $item->imagen_id) }}" class="badge text-bg-warning"><i class='bx bxs-edit'></i></a>
                   </td>
-                  <td>{{ $item->descripcion }}</td>
-                  <td>{{ $item->cantidad }}</td>
-                  <td>$ {{ $item->precio_venta }}</td>
-                  <td>$ {{ $item->precio_compra }}</td> 
+                  <td class="text-center">{{ $item->descripcion }}</td>
+                  <td class="text-center">{{ $item->cantidad }}</td>
+                  <td class="text-center">$ {{ $item->precio_venta }}</td>
+                  <td class="text-center">$ {{ $item->precio_compra }}</td> 
                   <td>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" role="switch" id="{{ $item->id }}"
