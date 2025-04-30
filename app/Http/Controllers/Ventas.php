@@ -34,4 +34,13 @@ class Ventas extends Controller
         $items = Producto::all();
         return view('modules.ventas.index', compact('titulo','items'));
     }
+
+    public function borrar_carrito()
+    {
+        Session::forget('items_carrito');
+        $titulo = "Ventas";
+        $items = Producto::all();
+        return view('modules.ventas.index', compact('titulo','items'));
+       
+    }
 }
