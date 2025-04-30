@@ -23,7 +23,7 @@
             </a>
             <hr>
             <!-- Table with stripped rows -->
-            <table class="table datatable">
+            <table class="table datatable table-condensed">
               <thead>
                 <tr class="text-center">
                  <th>Nombre Categoría</th>
