@@ -30,6 +30,7 @@ Route::middleware("auth")->group(function(){
 Route::prefix('ventas')->middleware("auth")->group(function(){
     Route::get('/nueva-venta', [Ventas::class, 'index'])->name('ventas-nueva');
     Route::get('/agregar-carrito/{id_producto}', [Ventas::class, 'agregar_carrito'])->name('ventas.agregar.carrito');
+    Route::get('/borrar-carrito', [Ventas::class, 'borrar_carrito'])->name('ventas.borrar.carrito');
 });
 
 // Prefijo para todas las rutas que tengan que ver con detalle de ventas
