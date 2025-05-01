@@ -54,20 +54,19 @@
           <div class="card-body">
             <h5 class="card-title">Crear una nueva Venta</h5>
             
-            @if (@session('items-carrito'))
-                <p>Tengo Contenido</p>
-                <table class="table-table-sm">
+            @if (@session('items_carrito'))
+                <table class="table table-sm">
                   <thead>
                     <th class="text-center">Código </th>
                     <th class="text-center">Nombre</th>
-                    <th class="text-center">Cantidad</th>                   <td class="text-center">$ {{ $item->precio_venta }}</td>
+                    <th class="text-center">Cantidad</th>                   
                     <th class="text-center">Precio</th>
                     <th class="text-center">Quitar</th>
                   <thead>  
-                    @foreach ($collection as $item)
+                    @foreach (session('items_carrito') as $item)
                       <tr>
+                        <td>{{ $item['id'] }}</td>
                         <td>{{ $item['nombre'] }}</td>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
