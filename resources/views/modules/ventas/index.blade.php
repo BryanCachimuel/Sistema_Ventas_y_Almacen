@@ -61,21 +61,20 @@
                     <th class="text-center">Nombre</th>
                     <th class="text-center">Cantidad</th>                   
                     <th class="text-center">Precio</th>
-                    <th class="text-center">Quitar</th>
                   <thead>  
                     @foreach (session('items_carrito') as $item)
                       <tr>
-                        <td>{{ $item['id'] }}</td>
-                        <td>{{ $item['nombre'] }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td class="text-center">{{ $item['codigo'] }}</td>
+                        <td class="text-center">{{ $item['nombre'] }}</td>
+                        <td class="text-center">{{ $item['cantidad'] }}</td>
+                        <td class="text-center">${{ $item['precio'] }}</td>
                       </tr>
                     @endforeach
                     <tbody>
                   </tbody>
                   </table>
                   <hr>
+                  <a href="" class="btn btn-primary">Realizar Compraº</a>
                   <a href="{{ route('ventas.borrar.carrito') }}" class="btn btn-danger">Borrar Carrito</a>
             @else
                 <p>No tengo Contenido</p>
