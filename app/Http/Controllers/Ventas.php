@@ -49,16 +49,30 @@ class Ventas extends Controller
 
         // se crea una sesión
         Session::put('items_carrito', $items_carrito);
+        return to_route('ventas-nueva');
+    }
 
+    public function quitar_carrito($id_producto){
+        $items_carrito = Session::get('items_carrito', []);
+        
+        foreach ($items_carrito as $key => $carrito) {
+            if($carrito['id'] == $id_producto){
+                if($carrito['cantidad'] > 1){
+                    $items_carrito[$key]['cantidad'] -= 1;
+                }else{
+                    unset($items_carrito[$key]);
+                }
+                break;
+            }
+        }
+
+        Session::put('items_carrito', $items_carrito);
         return to_route('ventas-nueva');
     }
 
     public function borrar_carrito()
     {
         Session::forget('items_carrito');
-        $titulo = "Ventas";
-        $items = Producto::all();
-        return view('modules.ventas.index', compact('titulo','items'));
-       
+        return to_route('ventas-nueva');
     }
 }
