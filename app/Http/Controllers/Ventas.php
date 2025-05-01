@@ -16,23 +16,41 @@ class Ventas extends Controller
 
     public function agregar_carrito($id_producto)
     {
-        $titulo = 'Ventas';
         $item = Producto::find($id_producto);
+        $cantidad_disponible = $item->cantidad;
 
         // obtener los productos ya almacenados
         $items_carrito = Session::get('items_carrito', []);
 
+        $existe_producto = false;
+        foreach ($items_carrito as $key => $carrito) {
+           if($carrito['id'] == $id_producto){
+
+            if($carrito['cantidad'] >= $cantidad_disponible){
+                return to_route('ventas-nueva')->with('error', 'No hay stock suficiente');
+            }
+
+            $items_carrito[$key]['cantidad'] += 1;
+            $existe_producto = true;
+            break;
+           }
+        }
+
         // agregar el nuevo producto
-        $items_carrito [] = [
-            'id' => $item->id,
-            'nombre' => $item->nombre
-        ];
+        if(!$existe_producto){
+            $items_carrito [] = [
+                'id' => $item->id,
+                'codigo' => $item->codigo,
+                'nombre' => $item->nombre,
+                'cantidad' => 1,
+                'precio' => $item->precio_venta 
+            ];
+        }
 
         // se crea una sesión
         Session::put('items_carrito', $items_carrito);
 
-        $items = Producto::all();
-        return view('modules.ventas.index', compact('titulo','items'));
+        return to_route('ventas-nueva');
     }
 
     public function borrar_carrito()
