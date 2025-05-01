@@ -61,20 +61,40 @@
                     <th class="text-center">Nombre</th>
                     <th class="text-center">Cantidad</th>                   
                     <th class="text-center">Precio</th>
-                  <thead>  
-                    @foreach (session('items_carrito') as $item)
+                    <th class="text-center">Quitar</th>
+                  </thead>
+                  <tbody>
+                    @php
+                        $totalGeneral = 0;
+                    @endphp
+                      @foreach (session('items_carrito') as $item)
+                      @php
+                          $totalProducto = $item['cantidad'] * $item['precio'];
+                          $totalGeneral += $totalProducto;
+                      @endphp
                       <tr>
                         <td class="text-center">{{ $item['codigo'] }}</td>
                         <td class="text-center">{{ $item['nombre'] }}</td>
                         <td class="text-center">{{ $item['cantidad'] }}</td>
                         <td class="text-center">${{ $item['precio'] }}</td>
+                        <td class="text-center">
+                          <a href="{{ route('ventas.quitar.carrito', $item['id']) }}" class="btn btn-danger">Quitar</a>
+                        </td>
                       </tr>
                     @endforeach
-                    <tbody>
                   </tbody>
+                  <tfoot>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class="text-center">Total General</td>
+                      <td class="text-center"><strong>${{ $totalGeneral }}</strong></td>
+                      <td></td>
+                    </tr>
+                  </tfoot>
                   </table>
                   <hr>
-                  <a href="" class="btn btn-primary">Realizar Compraº</a>
+                  <a href="" class="btn btn-primary">Realizar Venta</a>
                   <a href="{{ route('ventas.borrar.carrito') }}" class="btn btn-danger">Borrar Carrito</a>
             @else
                 <p>No tengo Contenido</p>
