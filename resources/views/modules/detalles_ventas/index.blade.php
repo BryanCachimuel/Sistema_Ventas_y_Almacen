@@ -6,7 +6,7 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Detalle de Ventas Realizadas</h1>
+    <h1>Consulta de Ventas Realizadas</h1>
   </div><!-- End Page Title -->
 
   <section class="section">
@@ -35,7 +35,7 @@
                   <td class="text-center">{{ $item->created_at }}</td>
                   <td class="text-center">{{ $item->nombre_usuario }}</td>
                   <td class="text-center">
-                    <a href="" class="btn btn-info">Detalle</a>
+                    <a href="{{ route('detalle.vista.detalle', $item->id) }}" class="btn btn-info">Detalle</a>
                   </td>
                   <td class="text-center">
                     <a href="" class="btn btn-danger">Revocar Venta</a>
