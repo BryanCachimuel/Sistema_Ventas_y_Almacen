@@ -38,6 +38,7 @@ Route::prefix('ventas')->middleware("auth")->group(function(){
 // Prefijo para todas las rutas que tengan que ver con detalle de ventas
 Route::prefix('detalle')->middleware("auth")->group(function(){
     Route::get('/detalle-venta', [DetalleVentas::class, 'index'])->name('detalle-venta');
+    Route::get('/vista-detalle/{id_venta}', [DetalleVentas::class, 'vista_detalle'])->name('detalle.vista.detalle');
 });
 
 // Prefijo para todas las rutas que tengan que ver con categorias
