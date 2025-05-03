@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Venta;
 use Illuminate\Http\Request;
 
 class DetalleVentas extends Controller
@@ -11,7 +12,16 @@ class DetalleVentas extends Controller
      */
     public function index()
     {
-       return view('modules.detalles_ventas.index');
+        $titulo = "Detalle de Ventas";
+        $items = Venta::select(
+            'ventas.*',
+            'users.name as nombre_usuario'
+        )
+        ->join('users','ventas.user_id', '=', 'users.id')
+        ->orderBy('ventas.created_at', 'desc')
+        ->get();
+        return view('modules.detalles_ventas.index', compact('titulo','items'));
+
     }
 
     /**
