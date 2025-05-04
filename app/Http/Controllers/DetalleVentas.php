@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detalle_venta;
+use App\Models\Producto;
 use App\Models\Venta;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DetalleVentas extends Controller
 {
@@ -44,5 +47,32 @@ class DetalleVentas extends Controller
     return view('modules.detalles_ventas.detalle_venta', compact('titulo','venta','detalles'));
   }
 
+  public function revocar($id)
+  {
+    DB::beginTransaction();
+    try {
+       $detalles = Detalle_venta::select(
+        'producto_id', 'cantidad'
+       )
+       ->where('venta_id', $id)
+       ->get();
+       
+       // devolver stock
+       foreach ($detalles as $detalle) {
+        Producto::where('id', $detalle->producto_id)
+        ->increment('cantidad', $detalle->cantidad);
+       }
+
+       // eliminar productos vendidos y la venta
+       Detalle_venta::where('venta_id', $id)->delete();
+       Venta::where('id', $id)->delete();
+
+       DB::commit();
+       return to_route('detalle-venta')->with('success','Revocación de venta exitosa');
+    } catch (Exception $e) {
+        DB::rollBack();
+        return to_route('detalle-venta')->with('error','No se pudo revocar la venta');
+    }
+  }
  
 }
