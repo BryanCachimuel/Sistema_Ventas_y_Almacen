@@ -25,6 +25,7 @@
                  <th class="text-center">Fecha Venta</th>
                  <th class="text-center">Usuario</th>
                  <th class="text-center">Ver Detalle</th>
+                 <th class="text-center">Imprimir Ticket</th>
                  <th class="text-center">Revocar Venta</th>
                 </tr>
               </thead>
@@ -37,8 +38,13 @@
                   <td class="text-center">
                     <a href="{{ route('detalle.vista.detalle', $item->id) }}" class="btn btn-info">Detalle</a>
                   </td>
+                  <td></td>
                   <td class="text-center">
-                    <a href="" class="btn btn-danger">Revocar Venta</a>
+                    <form action="{{ route('detalle.revocar', $item->id) }}" method="POST" onsubmit="return confirm('¿Está seguro de revocar está venta?')">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-danger">Revocar</button>
+                    </form>
                   </td>
                 </tr>
                 @endforeach
