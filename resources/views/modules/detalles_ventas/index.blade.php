@@ -38,7 +38,9 @@
                   <td class="text-center">
                     <a href="{{ route('detalle.vista.detalle', $item->id) }}" class="btn btn-info">Detalle</a>
                   </td>
-                  <td></td>
+                  <td class="text-center">
+                    <a target="_blank" href="{{ route('detalle.ticket', $item->id) }}" class="btn btn-success">Imprimir</a>
+                  </td>
                   <td class="text-center">
                     <form action="{{ route('detalle.revocar', $item->id) }}" method="POST" onsubmit="return confirm('¿Está seguro de revocar está venta?')">
                       @csrf
