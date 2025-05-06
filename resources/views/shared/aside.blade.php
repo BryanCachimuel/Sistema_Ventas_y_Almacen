@@ -9,10 +9,11 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
+      
+      @can('ver-ventas')
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class='bx bx-cart'></i><span>Ventas</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="fa-solid fa-cash-register"></i><span>Ventas</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -26,10 +27,12 @@
             </a>
         </ul>
       </li><!-- End Components Nav -->
+      @endcan
 
+      @can('ver-admin')
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route("categorias") }}">
-          <i class='bx bx-category'></i>
+          <i class="fa-solid fa-list-check"></i>
           <span>Categorias</span>
         </a>
       </li><!-- End Categorias Page Nav -->
@@ -60,18 +63,18 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route("proveedores") }}">
-          <i class='bx bxs-user-detail'></i>
+          <i class="fa-solid fa-truck-moving"></i>
           <span>Proveedores</span>
         </a>
       </li><!-- End Clientes Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route("usuarios") }}">
-          <i class='bx bxs-user-badge'></i>
+          <i class="fa-solid fa-users-between-lines"></i>
           <span>Usuarios</span>
         </a>
       </li><!-- End Usuarios Page Nav -->
-
+      @endcan
     </ul>
 
   </aside><!-- End Sidebar-->
