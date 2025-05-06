@@ -44,7 +44,7 @@ Route::prefix('detalle')->middleware("auth")->group(function(){
 });
 
 // Prefijo para todas las rutas que tengan que ver con categorias
-Route::prefix('categorias')->middleware("auth")->group(function(){
+Route::prefix('categorias')->middleware("auth", "Checkrol:admin")->group(function(){
     Route::get('/', [Categorias::class, 'index'])->name('categorias');
     Route::get('/create', [Categorias::class, 'create'])->name('categorias.create');
     Route::post('/store', [Categorias::class, 'store'])->name('categorias.store');
@@ -55,7 +55,7 @@ Route::prefix('categorias')->middleware("auth")->group(function(){
 });
 
 // Prefijo para todas las rutas que tengan que ver con productos
-Route::prefix('productos')->middleware("auth")->group(function(){
+Route::prefix('productos')->middleware("auth", "Checkrol:admin")->group(function(){
     Route::get('/', [Productos::class, 'index'])->name('productos');
     Route::get('/create', [Productos::class, 'create'])->name('productos.create');
     Route::post('/store', [Productos::class, 'store'])->name('productos.store');
@@ -71,13 +71,13 @@ Route::prefix('productos')->middleware("auth")->group(function(){
 });
 
 // Prefijo para todas las rutas que tengan que ver con reportes
-Route::prefix('reportes_productos')->middleware("auth")->group(function(){
+Route::prefix('reportes_productos')->middleware("auth", "Checkrol:admin")->group(function(){
     Route::get('/', [ReportesProductos::class, 'index'])->name('reportes_productos');
     Route::get('/falta-stock', [ReportesProductos::class, 'falta_stock'])->name('reportes_productos.falta_stock');
 });
 
 // Prefijo para todas las rutas que tengan que ver con clientes
-Route::prefix('proveedores')->middleware("auth")->group(function(){
+Route::prefix('proveedores')->middleware("auth", "Checkrol:admin")->group(function(){
     Route::get('/', [Proveedores::class, 'index'])->name('proveedores');
     Route::get('/create', [Proveedores::class, 'create'])->name('proveedores.create');
     Route::post('/store', [Proveedores::class, 'store'])->name('proveedores.store');
@@ -88,7 +88,7 @@ Route::prefix('proveedores')->middleware("auth")->group(function(){
 });
 
 // Prefijo para todas las rutas que tengan que ver con usuarios
-Route::prefix('usuarios')->middleware("auth")->group(function(){
+Route::prefix('usuarios')->middleware("auth", "Checkrol:admin")->group(function(){
     Route::get('/', [Usuarios::class, 'index'])->name('usuarios');
     Route::get('/create', [Usuarios::class, 'create'])->name('usuarios.create');
     Route::post('/store', [Usuarios::class, 'store'])->name('usuarios.store');
@@ -100,7 +100,7 @@ Route::prefix('usuarios')->middleware("auth")->group(function(){
 });
 
 // Prefijo para todas las rutas que tengan que ver con las compras
-Route::prefix('compras')->middleware("auth")->group(function(){
+Route::prefix('compras')->middleware("auth", "Checkrol:admin")->group(function(){
     Route::get('/', [Compras::class, 'index'])->name('compras');
     Route::get('/create/{producto_id}', [Compras::class, 'create'])->name('compras.create');
     Route::post('/store', [Compras::class, 'store'])->name('compras.store');
