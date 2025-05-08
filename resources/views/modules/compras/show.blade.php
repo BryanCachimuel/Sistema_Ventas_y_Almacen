@@ -47,9 +47,9 @@
                 @csrf
                 @method('DELETE')
                 <input type="text" hidden name="producto_id" id="producto_id" value="{{ $items->producto_id }}">
-                <button class="btn btn-danger">Eliminar Compra</button>
-                <a href="{{ route("compras") }}" class="btn btn-info">
-                    Cancelar
+                <button class="btn btn-outline-primary"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                <a href="{{ route("compras") }}" class="btn btn-outline-danger">
+                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
                 </a>
             </form>
           </div>

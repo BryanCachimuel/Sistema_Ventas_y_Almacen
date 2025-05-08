@@ -37,9 +37,9 @@
             <form action="{{ route("proveedores.destroy", $item->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger mt-3">Eliminar</button>
-                <a href="{{ route("proveedores") }}" class="btn btn-info mt-3">
-                    Cancelar
+                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                <a href="{{ route("proveedores") }}" class="btn btn-outline-danger mt-3">
+                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
                 </a>
             </form>
           </div>
