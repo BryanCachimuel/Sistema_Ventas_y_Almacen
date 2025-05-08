@@ -52,7 +52,9 @@ class Usuarios extends Controller
      */
     public function show(string $id)
     {
-        //
+        $titulo = 'Eliminar Categoría';
+        $item = User::find($id);
+        return view('modules.usuarios.show', compact( 'titulo','item'));
     }
 
     /**
