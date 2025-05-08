@@ -34,11 +34,11 @@
                 <input type="text" class="form-control" required name="sitio_web" id="sitio_web" value="{{ $item->sitio_web }}">
 
                 <label for="notas">Notas</label>
-                <textarea name="notas" id="notas" cols="20" rows="10" class="form-control">{{ $item->notas }}</textarea>
+                <textarea name="notas" id="notas" cols="20" rows="2" class="form-control">{{ $item->notas }}</textarea>
 
-                <button class="btn btn-warning mt-3">Actualizar</button>
-                <a href="{{ route("proveedores") }}" class="btn btn-info mt-3">
-                    Cancelar
+                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+                <a href="{{ route("proveedores") }}" class="btn btn-outline-danger mt-3">
+                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
                 </a>
             </form>
           </div>

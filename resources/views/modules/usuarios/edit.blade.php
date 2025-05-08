@@ -36,9 +36,9 @@
                    
                     
                 </select>
-                <button class="btn btn-warning mt-3">Actualizar</button>
-                <a href="{{ route("usuarios") }}" class="btn btn-info mt-3">
-                    Cancelar
+                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+                <a href="{{ route("usuarios") }}" class="btn btn-outline-danger mt-3">
+                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
                 </a>
             </form>
           </div>
