@@ -19,9 +19,9 @@
                 @csrf
                 <label for="nombre">Nombre de categoria</label>
                 <input type="text" class="form-control" required name="nombre" id="nombre">
-                <button class="btn btn-primary mt-3">Guardar</button>
-                <a href="{{ route("categorias") }}" class="btn btn-info mt-3">
-                    Cancelar
+                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                <a href="{{ route("categorias") }}" class="btn btn-outline-danger mt-3">
+                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
                 </a>
             </form>
           </div>

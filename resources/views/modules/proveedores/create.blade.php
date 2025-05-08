@@ -33,11 +33,11 @@
                 <input type="text" class="form-control" required name="sitio_web" id="sitio_web">
 
                 <label for="notas">Notas</label>
-                <textarea name="notas" id="notas" cols="20" rows="10" class="form-control"></textarea>
+                <textarea name="notas" id="notas" cols="20" rows="2" class="form-control"></textarea>
 
-                <button class="btn btn-primary mt-3">Guardar</button>
-                <a href="{{ route("proveedores") }}" class="btn btn-info mt-3">
-                    Cancelar
+                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                <a href="{{ route("proveedores") }}" class="btn btn-outline-danger mt-3">
+                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
                 </a>
             </form>
           </div>
