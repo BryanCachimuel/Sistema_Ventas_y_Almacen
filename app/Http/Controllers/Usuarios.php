@@ -87,7 +87,13 @@ class Usuarios extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $item = User::find($id);
+            $item->delete();
+            return to_route('usuarios')->with('success','Usuario Eliminada');
+        } catch (Exception $e) {
+            return to_route('usuarios')->with('error', 'No se pudo eliminar el usuario' . $e->getMessage());
+        }
     }
 
     public function tbody()
