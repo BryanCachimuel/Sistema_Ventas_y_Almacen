@@ -13,8 +13,8 @@
               <input type="password" class="form-control" name="password" id="password" required>
             </div>
             <div class="modal-footer">
-              <span class="btn btn-danger" data-bs-dismiss="modal">Cerrar</span>
-              <button class="btn btn-warning">Actualizar</button>
+              <button class="btn btn-outline-success"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+              <span class="btn btn-outline-danger" data-bs-dismiss="modal"><i class="fa-solid fa-circle-xmark"></i> Cerrar</span>
             </div>
           </div>
         </div>
