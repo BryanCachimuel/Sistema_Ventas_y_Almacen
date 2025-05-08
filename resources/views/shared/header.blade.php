@@ -29,7 +29,13 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{ Auth::user()->name }}</h6>
-              <span>{{ Auth::user()->rol }}</span>
+              <span>
+                @if (Auth::user()->rol == 'admin')
+                    Administrador
+                @else
+                    Cajero
+                @endif
+              </span>
             </li>
             <li>
               <hr class="dropdown-divider">
