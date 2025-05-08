@@ -25,9 +25,9 @@
             <!-- Table with stripped rows -->
             <table class="table datatable table-condensed">
               <thead>
-                <tr class="text-center">
-                 <th>Nombre Categoría</th>
-                 <th>Acciones</th>
+                <tr>
+                 <th class="text-center">Nombre Categoría</th>
+                 <th class="text-center">Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -37,8 +37,8 @@
                     {{ $item->nombre }}
                   </td>
                   <td>
-                    <a href="{{ route("categorias.edit", $item->id) }}" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-                    <a href="{{ route("categorias.show", $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+                    <a href="{{ route("categorias.edit", $item->id) }}" class="btn btn-outline-success"><i class='bx bxs-edit'></i></a>
+                    <a href="{{ route("categorias.show", $item->id) }}" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
                   </td>
                 </tr>
                 @endforeach

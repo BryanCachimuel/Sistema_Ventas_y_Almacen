@@ -25,26 +25,26 @@
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
-                <tr class="text-center">
-                 <th>Proveedor</th>
-                 <th>Código</th>
-                 <th>Nombre</th>
-                 <th>Imagen</th>
-                 <th>Descripción</th>
-                 <th>Cantidad</th>
-                 <th>Venta</th>
-                 <th>Compra</th>
-                 <th>Activo</th>
-                 <th>Comprar</th>
-                 <th>Acciones</th>
+                <tr>
+                 <th class="text-center">Proveedor</th>
+                 <!--<th>Código</th>-->
+                 <th class="text-center">Nombre</th>
+                 <th class="text-center">Imagen</th>
+                 <th class="text-center">Descripción</th>
+                 <th class="text-center">Cantidad</th>
+                 <th class="text-center">Venta</th>
+                 <th class="text-center">Compra</th>
+                 <th class="text-center">Activo</th>
+                 <th class="text-center">Comprar</th>
+                 <th class="text-center">Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($items as $item)
                 <tr>
                   <td class="text-center">{{ $item->nombre_proveedor }}</td>
-                  <td class="text-center">{{ $item->codigo }}</td>
                   <td class="text-center">{{ $item->nombre }}</td>
+
                   <td class="text-center">
                     <img src="{{ asset('storage/'.$item->imagen_producto) }}" width="100px" height="100px" alt="">
                     <a href="{{ route('productos.show.image', $item->imagen_id) }}" class="badge text-bg-warning"><i class='bx bxs-edit'></i></a>
@@ -60,11 +60,11 @@
                     </div>
                   </td>
                   <td>
-                    <a href="{{ route('compras.create', $item->id) }}" class="btn btn-info">Comprar</a>
+                    <a href="{{ route('compras.create', $item->id) }}" class="btn btn-outline-info"><i class="fa-solid fa-cart-shopping"></i></a>
                   </td>
                   <td>
-                    <a href="{{ route("productos.edit", $item->id) }}" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-                    <a href="{{ route("productos.show", $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+                    <a href="{{ route("productos.edit", $item->id) }}" class="btn btn-outline-warning"><i class='bx bxs-edit'></i></a>
+                    <a href="{{ route("productos.show", $item->id) }}" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
                   </td>
                 </tr>
                 @endforeach

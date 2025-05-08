@@ -19,34 +19,34 @@
             <p>Administrar los Proveedores de los productos</p>
 
             <a href="{{ route('proveedores.create') }}" class="btn btn-primary">
-              <i class='bx bxs-plus-circle'></i> Agregar Nuevo Proveedor
+              <i class='bx bxs-plus-circle'></i> Agregar Proveedor
             </a>
             <hr>
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
-                <tr class="text-center">
-                 <th>Nombre</th>
-                 <th>Teléfono</th>
-                 <th>Correo</th>
-                 <th>Código Postal</th>
-                 <th>Sitio Web</th>
-                 <th>Nota</th>
-                 <th>Acciones</th>
+                <tr>
+                 <th class="text-center">Nombre</th>
+                 <th class="text-center">Teléfono</th>
+                 <th class="text-center">Correo</th>
+                 <th class="text-center">Código Postal</th>
+                 <th class="text-center">Sitio Web</th>
+                 <th class="text-center">Nota</th>
+                 <th class="text-center">Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($items as $item)
-                <tr class="text-center">
-                  <td>{{ $item->nombre }}</td>
-                  <td>{{ $item->telefono }}</td>
-                  <td>{{ $item->email }}</td>
-                  <td>{{ $item->codigo_postal }}</td>
-                  <td>{{ $item->sitio_web }}</td>
-                  <td>{{ $item->notas }}</td>
-                  <td>
-                    <a href="{{ route("proveedores.edit", $item->id) }}" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-                    <a href="{{ route("proveedores.show", $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+                <tr>
+                  <td class="text-center">{{ $item->nombre }}</td>
+                  <td class="text-center">{{ $item->telefono }}</td>
+                  <td class="text-center">{{ $item->email }}</td>
+                  <td class="text-center">{{ $item->codigo_postal }}</td>
+                  <td class="text-center">{{ $item->sitio_web }}</td>
+                  <td class="text-center">{{ $item->notas }}</td>
+                  <td class="text-center">
+                    <a href="{{ route("proveedores.edit", $item->id) }}" class="btn btn-outline-warning"><i class='bx bxs-edit'></i></a>
+                    <a href="{{ route("proveedores.show", $item->id) }}" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
                   </td>
                 </tr>
                 @endforeach

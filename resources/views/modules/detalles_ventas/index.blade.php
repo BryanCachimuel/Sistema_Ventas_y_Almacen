@@ -36,16 +36,16 @@
                   <td class="text-center">{{ $item->created_at }}</td>
                   <td class="text-center">{{ $item->nombre_usuario }}</td>
                   <td class="text-center">
-                    <a href="{{ route('detalle.vista.detalle', $item->id) }}" class="btn btn-info">Detalle</a>
+                    <a href="{{ route('detalle.vista.detalle', $item->id) }}" class="btn btn-outline-info"><i class="fa-solid fa-eye"></i></a>
                   </td>
                   <td class="text-center">
-                    <a target="_blank" href="{{ route('detalle.ticket', $item->id) }}" class="btn btn-success">Imprimir</a>
+                    <a target="_blank" href="{{ route('detalle.ticket', $item->id) }}" class="btn btn-outline-success"><i class="fa-solid fa-print"></i></a>
                   </td>
                   <td class="text-center">
                     <form action="{{ route('detalle.revocar', $item->id) }}" method="POST" onsubmit="return confirm('¿Está seguro de revocar está venta?')">
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger">Revocar</button>
+                      <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
                     </form>
                   </td>
                 </tr>

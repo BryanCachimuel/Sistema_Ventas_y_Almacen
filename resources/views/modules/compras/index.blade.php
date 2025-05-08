@@ -41,8 +41,8 @@
                   <td>$ {{ $item->precio_compra * $item->cantidad }}</td>
                   <td>{{ $item->created_at }}</td>
                   <td>
-                    <a href="{{ route('compras.edit', $item->id) }}" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-                    <a href="{{ route('compras.show', $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+                    <a href="{{ route('compras.edit', $item->id) }}" class="btn btn-outline-warning"><i class='bx bxs-edit'></i></a>
+                    <a href="{{ route('compras.show', $item->id) }}" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
                   </td>
                 </tr>
                 @endforeach

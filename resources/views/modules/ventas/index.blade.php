@@ -33,7 +33,7 @@
                       <td class="text-center">{{ $item->cantidad }}</td>
                       <td class="text-center">$ {{ $item->precio_venta }}</td>
                       <td class="text-center">
-                        <a href="{{ route("ventas.agregar.carrito", $item->id) }}" class="btn btn-success">Agregar</a>
+                        <a href="{{ route("ventas.agregar.carrito", $item->id) }}" class="btn btn-outline-success"><i class="fa-solid fa-cart-plus"></i></a>
                       </td>
                     </tr>
                 @endforeach
