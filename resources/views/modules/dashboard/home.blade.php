@@ -52,12 +52,8 @@
               <div class="col-4">
                 <div class="card w-55 bg-info">
                   <div class="card-body">
-                    <h5 class="card-title text-white text-center">Últimas ventas</h5>
-                    <h3 class="card-text text-white text-center">
-                        @foreach ($ventasRecientes as $item)
-                            Venta #{{ $item->id }} - ${{ number_format($item->total_venta, 2) }}
-                        @endforeach
-                    </h3>
+                    <h5 class="card-title text-white text-center">Total Usuarios</h5>
+                    <h2 class="card-text text-white text-center">{{ $cantidadUsuarios }}</h2>
                   </div>
                 </div>
               </div>

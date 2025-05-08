@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use App\Models\Proveedor;
+use App\Models\User;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class Dashboard extends Controller
         $cantidadProductos = Producto::count();
         $productoBajosStock = Producto::where('cantidad', '<', 5)->get();
         $cantidadProveedores = Proveedor::count();
-        $ventasRecientes = Venta::orderBy('created_at','desc')->take(5)->get();
-        return view('modules.dashboard.home', compact('titulo','totalVentas','cantidadVentas','cantidadProductos','productoBajosStock','cantidadProveedores','ventasRecientes'));
+        //$ventasRecientes = Venta::orderBy('created_at','desc')->take(5)->get();
+        $cantidadUsuarios = User::count();
+        return view('modules.dashboard.home', compact('titulo','totalVentas','cantidadVentas','cantidadProductos','productoBajosStock','cantidadProveedores','cantidadUsuarios'));
     }
 }
