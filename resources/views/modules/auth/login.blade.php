@@ -13,7 +13,7 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="#" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/logo.png" alt="">
+                  <img src="{{ asset('NiceAdmin/assets/img/logo.png') }}" alt="">
                   <span class="d-none d-lg-block">Ventas y Almacén</span>
                 </a>
               </div><!-- End Logo -->
@@ -23,7 +23,7 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Inicio de Sesión de Usuarios</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">Inicio de Sesión</h5>
                     <p class="text-center small">Ingresa tu correo y contraseña para acceder</p>
                   </div>
 
