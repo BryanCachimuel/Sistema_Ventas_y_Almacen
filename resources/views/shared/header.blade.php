@@ -31,9 +31,9 @@
               <h6>{{ Auth::user()->name }}</h6>
               <span>
                 @if (Auth::user()->rol == 'admin')
-                    Administrador
+                  <i class="fa-solid fa-user-tie"></i> Administrador
                 @else
-                    Cajero
+                  <i class="fa-regular fa-user"></i>Cajero
                 @endif
               </span>
             </li>
