@@ -22,6 +22,7 @@
   </td>
   <td class="text-center">
     <a href="{{ route("usuarios.edit", $item->id) }}" class="btn btn-outline-warning"><i class="fa-solid fa-user-pen"></i></a>
+    <a href="{{ route("usuarios.show", $item->id) }}" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></a>
   </td>
 </tr>
 @endforeach
