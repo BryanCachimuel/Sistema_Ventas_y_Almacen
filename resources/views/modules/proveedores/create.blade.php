@@ -17,28 +17,56 @@
             
             <form action="{{ route("proveedores.store") }}" method="POST">
                 @csrf 
-                <label for="nombre">Nombre de Proveedor</label>
-                <input type="text" class="form-control" required name="nombre" id="nombre">
 
-                <label for="telefono">Teléfono</label>
-                <input type="text" class="form-control" required name="telefono" id="telefono">
+                <div class="form-group row mb-2">
+                  <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="text" class="form-control" required name="nombre" id="nombre">
+                  </div>
+                </div>
 
-                <label for="email">Correo</label>
-                <input type="email" class="form-control" required name="email" id="email">
+                <div class="form-group row mb-2">
+                  <label for="telefono" class="col-sm-2 col-form-label">Celular:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="text" class="form-control" required name="telefono" id="telefono">
+                  </div>
+                </div>
+                
+                <div class="form-group row mb-2">
+                  <label for="email" class="col-sm-2 col-form-label">Correo:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="email" class="form-control" required name="email" id="email">
+                  </div>
+                </div>
+                
+                
+                <div class="form-group row mb-2">
+                  <label for="codigo_postal" class="col-sm-2 col-form-label">Código Postal:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="text" class="form-control" required name="codigo_postal" id="codigo_postal">
+                  </div>
+                </div>
+                
+                <div class="form-group row mb-2">
+                  <label for="sitio_web" class="col-sm-2 col-form-label">Sitio Web:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="text" class="form-control" required name="sitio_web" id="sitio_web">
+                  </div>
+                </div>
 
-                <label for="codigo_postal">Código Postal</label>
-                <input type="text" class="form-control" required name="codigo_postal" id="codigo_postal">
+                <div class="form-group row mb-2">
+                  <label for="notas" class="col-sm-2 col-form-label">Notas:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <textarea name="notas" id="notas" cols="20" rows="2" class="form-control"></textarea>
+                  </div>
+                </div>
 
-                <label for="sitio_web">Sitio Web</label>
-                <input type="text" class="form-control" required name="sitio_web" id="sitio_web">
-
-                <label for="notas">Notas</label>
-                <textarea name="notas" id="notas" cols="20" rows="2" class="form-control"></textarea>
-
-                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
-                <a href="{{ route("proveedores") }}" class="btn btn-outline-danger mt-3">
-                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
-                </a>
+                <div class="text-end">
+                  <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                  <a href="{{ route("proveedores") }}" class="btn btn-outline-danger mt-3">
+                    <i class="fa-solid fa-circle-xmark"></i> Cancelar
+                  </a>
+                </div>
             </form>
           </div>
         </div>
