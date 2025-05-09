@@ -31,7 +31,7 @@
                  <th class="text-center">Rol</th>
                  <th class="text-center">Cambio Contraseña</th>
                  <th class="text-center">Activo</th>
-                 <th class="text-center">Editar</th>
+                 <th class="text-center">Acciones</th>
                 </tr>
               </thead>
               <tbody id="tbody-usuarios">
