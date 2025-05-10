@@ -50,7 +50,9 @@
             </table>
             <!-- End Table with stripped rows -->
             <hr>
-            <a href="{{ route('detalle-venta') }}" class="btn btn-warning">Cancelar</a>
+            <div class="text-end">
+              <a href="{{ route('detalle-venta') }}" class="btn btn-warning"><i class="fa-solid fa-circle-xmark"></i> Cancelar</a>
+            </div>
           </div>
         </div>
 
