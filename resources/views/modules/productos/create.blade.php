@@ -17,38 +17,65 @@
             
             <form action="{{ route("productos.store") }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <label for="categoria_id">Categoría</label>
-                <select name="categoria_id" id="categoria_id" class="form-select" required>
-                    <option value="">Selecciona una categoría</option>
-                    @foreach ($categorias as $categoria)
-                        <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
-                    @endforeach
-                </select>
 
-                <label for="proveedor_id">Proveedor</label>
-                <select name="proveedor_id" id="proveedor_id" class="form-select" required>
-                    <option value="">Selecciona un proveedor</option>
-                    @foreach ($proveedores as $proveedor)
-                    <option value="{{ $proveedor->id }}">{{ $proveedor->nombre }}</option>
-                    @endforeach
-                </select>
+                <div class="form-group row mb-2">
+                  <label for="categoria_id" class="col-sm-2 col-form-label">Categoría:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <select name="categoria_id" id="categoria_id" class="form-select" required>
+                      <option value="">Selecciona una categoría</option>
+                      @foreach ($categorias as $categoria)
+                          <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
 
-                <label for="codigo">Código de producto</label>
-                <input type="text" class="form-control" name="codigo" id="codigo" required>
+                <div class="form-group row mb-2">
+                  <label for="proveedor_id" class="col-sm-2 col-form-label">Proveedor:</label>
+                  <div class="col-sm-10 col-form-label">
+                     <select name="proveedor_id" id="proveedor_id" class="form-select" required>
+                      <option value="">Selecciona un proveedor</option>
+                      @foreach ($proveedores as $proveedor)
+                      <option value="{{ $proveedor->id }}">{{ $proveedor->nombre }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
 
-                <label for="nombre">Nombre de producto</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" required>
+                <div class="form-group row mb-2">
+                  <label for="codigo" class="col-sm-2 col-form-label">Código de producto:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="text" class="form-control" name="codigo" id="codigo" required>
+                  </div>
+                </div>
 
-                <label for="descripcion">Descripción</label>
-                <textarea class="form-control" name="descripcion" id="descripcion" cols="20" rows="5"></textarea>
+                <div class="form-group row mb-2">
+                  <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="text" class="form-control" name="nombre" id="nombre" required>
+                  </div>
+                </div>
 
-                <label for="imagen">Imagen</label>
-                <input type="file" name="imagen" id="imagen" class="form-control">
+                <div class="form-group row mb-2">
+                  <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <textarea class="form-control" name="descripcion" id="descripcion" cols="20" rows="2"></textarea>
+                  </div>
+                </div>
+                
+                <div class="form-group row mb-2">
+                  <label for="imagen" class="col-sm-2 col-form-label">Imagen:</label>
+                  <div class="col-sm-10 col-form-label">
+                     <input type="file" name="imagen" id="imagen" class="form-control">
+                  </div>
+                </div>
 
-                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
-                <a href="{{ route("productos") }}" class="btn btn-outline-danger mt-3">
-                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
-                </a>
+                <div class="text-end">
+                  <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                  <a href="{{ route("productos") }}" class="btn btn-outline-danger mt-3">
+                    <i class="fa-solid fa-circle-xmark"></i> Cancelar
+                  </a>
+                </div>
             </form>
           </div>
         </div>
