@@ -19,16 +19,26 @@
                 @csrf
                 @method('PUT')
                 <input type="text" hidden name="producto_id" id="producto_id" value="{{ $item->producto_id }}">
-                <label for="cantidad">Cantidad de Producto</label>
-                <input type="text" class="form-control" name="cantidad" id="cantidad" value="{{ $item->cantidad }}" required>
 
-                <label for="precio_compra">Precio de Compra</label>
-                <input type="text" class="form-control" name="precio_compra" id="precio_compra" value="{{ $item->precio_compra }}" required>
+                <div class="form-group row mb-2">
+                  <label for="cantidad" class="col-sm-2 col-form-label">Cantidad de Producto:</label>
+                  <div class="col-sm-10 col-form-label">
+                     <input type="text" class="form-control" name="cantidad" id="cantidad" value="{{ $item->cantidad }}" required>
+                  </div>
+                </div>
 
-                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
-                <a href="{{ route("compras") }}" class="btn btn-outline-danger mt-3">
-                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
-                </a>
+               <div class="form-group row mb-2">
+                  <label for="precio_compra" class="col-sm-2 col-form-label">Precio de Compra:</label>
+                  <div class="col-sm-10 col-form-label">
+                     <input type="text" class="form-control" name="precio_compra" id="precio_compra" value="{{ $item->precio_compra }}" required>
+                  </div>
+                </div>
+                <div class="text-end">
+                  <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+                  <a href="{{ route("compras") }}" class="btn btn-outline-danger mt-3">
+                    <i class="fa-solid fa-circle-xmark"></i> Cancelar
+                  </a>
+                </div>
             </form>
           </div>
         </div>
