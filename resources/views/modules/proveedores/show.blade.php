@@ -34,7 +34,8 @@
                 </tbody>
               </table>
             
-            <form action="{{ route("proveedores.destroy", $item->id) }}" method="POST">
+           <div class="text-end">
+             <form action="{{ route("proveedores.destroy", $item->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
@@ -42,6 +43,7 @@
                   <i class="fa-solid fa-circle-xmark"></i> Cancelar
                 </a>
             </form>
+           </div>
           </div>
         </div>
       </div>
