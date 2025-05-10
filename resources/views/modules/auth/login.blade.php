@@ -1,5 +1,6 @@
 @extends('layouts.login')
 
+<link rel="shortcut icon" href="{{ asset('NiceAdmin/assets/img/logo.png') }}" type="image/x-icon"/>
 @section('titulo', $titulo)
 
 @section('contenido')
