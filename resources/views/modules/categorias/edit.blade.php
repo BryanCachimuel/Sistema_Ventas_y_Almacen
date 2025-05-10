@@ -18,16 +18,25 @@
             <form action="{{ route("categorias.update", $item->id) }}" method="POST">
                 @csrf
                 @method("PUT")
-                <label for="nombre">Nombre de categoria</label>
-                <input type="text" 
+
+                <div class="form-group row mb-2">
+                  <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="text" 
                        class="form-control"
                        name="nombre" 
                        id="nombre"
                        value="{{ $item->nombre }}">
-                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
-                <a href="{{ route("categorias") }}" class="btn btn-outline-danger mt-3">
-                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
-                </a>
+                  </div>
+                </div>
+
+                <div class="text-end">
+                  <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+                  <a href="{{ route("categorias") }}" class="btn btn-outline-danger mt-3">
+                    <i class="fa-solid fa-circle-xmark"></i> Cancelar
+                  </a>
+                </div>
+                
             </form>
           </div>
         </div>
