@@ -45,12 +45,14 @@
             </table>
             <!-- End Table with stripped rows -->
             <hr>
-            <form action="{{ route("productos.destroy", $item->id) }}" method="POST">
+            <div class="text-end">
+              <form action="{{ route("productos.destroy", $item->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-outline-primary"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                 <a href="{{ route("productos") }}" class="btn btn-outline-danger"><i class="fa-solid fa-circle-xmark"></i> Cancelar</a>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
 
