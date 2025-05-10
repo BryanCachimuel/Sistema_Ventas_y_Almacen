@@ -43,7 +43,8 @@
             </table>
             <!-- End Table with stripped rows -->
             <hr>
-            <form action="{{ route('compras.destroy', $items->id) }}" method="post">
+           <div class="text-end">
+             <form action="{{ route('compras.destroy', $items->id) }}" method="post">
                 @csrf
                 @method('DELETE')
                 <input type="text" hidden name="producto_id" id="producto_id" value="{{ $items->producto_id }}">
@@ -52,6 +53,7 @@
                   <i class="fa-solid fa-circle-xmark"></i> Cancelar
                 </a>
             </form>
+           </div>
           </div>
         </div>
 
