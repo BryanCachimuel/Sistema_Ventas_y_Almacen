@@ -15,7 +15,7 @@
           <div class="card-body">
             <h5 class="card-title">Agregar Nuevo Usuario</h5>
             
-            <form action="{{ route("usuarios.store") }}" method="POST">
+            <form action="{{ route("usuarios.store") }}" method="POST" autocomplete="off">
                 @csrf
 
                 <div class="form-group row mb-2">
@@ -50,10 +50,12 @@
                   </div>
                 </div>
 
-                <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
-                <a href="{{ route("usuarios") }}" class="btn btn-outline-danger mt-3">
-                  <i class="fa-solid fa-circle-xmark"></i> Cancelar
-                </a>
+                <div class="text-end">
+                  <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                  <a href="{{ route("usuarios") }}" class="btn btn-outline-danger mt-3">
+                    <i class="fa-solid fa-circle-xmark"></i> Cancelar
+                  </a>
+                </div>
             </form>
           </div>
         </div>
