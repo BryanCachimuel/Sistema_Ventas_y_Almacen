@@ -6,6 +6,7 @@ use App\Http\Controllers\Compras;
 use App\Http\Controllers\Proveedores;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DetalleVentas;
+use App\Http\Controllers\Inicio;
 use App\Http\Controllers\Productos;
 use App\Http\Controllers\ReportesProductos;
 use App\Http\Controllers\Usuarios;
@@ -15,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 // crear un usuario administrador, solo usar una vez
 //Route::get('/crear-administrador', [AuthController::class, 'crearAdministrador']);
 
+Route::get('/', [Inicio::class, 'index'])->name('inicio');
 
-Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/logear', [AuthController::class, 'logear'])->name('logear');
 
 // middleware auth autentifica a un grupo de rutas y las protege para que no se puedan ingresar si un usuario no esta logeado
