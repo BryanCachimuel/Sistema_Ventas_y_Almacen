@@ -15,7 +15,7 @@
           <div class="card-body">
             <h5 class="card-title">Editar Producto</h5>
             
-            <form action="{{ route('productos.update', $item->id) }}" method="POST">
+            <form action="{{ route('productos.update', $item->id) }}" method="POST" autocomplete="off">
                 @csrf
                 @method('PUT')
 

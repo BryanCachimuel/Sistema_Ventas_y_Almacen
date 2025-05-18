@@ -15,7 +15,7 @@
           <div class="card-body">
             <h5 class="card-title">Agregar Nuevo Producto</h5>
             
-            <form action="{{ route("productos.store") }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route("productos.store") }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf
 
                 <div class="form-group row mb-2">
