@@ -13,7 +13,7 @@
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="#" class="logo d-flex align-items-center w-auto">
+                <a href="{{ route('inicio') }}" class="logo d-flex align-items-center w-auto">
                   <img src="{{ asset('NiceAdmin/assets/img/logo.png') }}" alt="">
                   <span class="d-none d-lg-block">Ventas y Almacén</span>
                 </a>
@@ -31,17 +31,33 @@
                   <form class="row g-3 needs-validation" method="POST" action="{{ route('logear') }}" novalidate autocomplete="off">
                     @csrf
                     <div class="col-12">
-                      <label for="email" class="form-label">Correo</label>
+                      <!--<label for="email" class="form-label">Correo</label>
                       <div class="input-group has-validation">
                         <input type="email" name="email" class="form-control" id="email" required>
                         <div class="invalid-feedback">Por favor ingrese su correo.</div>
+                      </div>-->
+                      <div class="input-group mb-2">
+                        <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                        <div class="form-floating">
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Correo" required>
+                          <label for="email">Correo</label>
+                        </div>
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="password" class="form-label">Contraseña</label>
+                      <!--<label for="password" class="form-label">Contraseña</label>
                       <input type="password" name="password" class="form-control" id="password" required>
-                      <div class="invalid-feedback">Por favor ingrese su contraseña!</div>
+                      <div class="invalid-feedback">Por favor ingrese su contraseña!</div>-->
+                      <div class="input-group mb-2">
+                        <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                        <div class="form-floating">
+                          <input type="password" class="form-control" name="password" id="password" placeholder="Username" required>
+                          <label for="password">Username</label>
+                        </div>
+                      </div>
+
+
                     </div>
 
                     <div class="col-12">
