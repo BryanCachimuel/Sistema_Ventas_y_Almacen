@@ -15,10 +15,15 @@
 
         <div class="card">
           <div class="card-body">
-            <h3 class="mt-3 mb-4">Bienvenido, {{ Auth::user()->name }}</h3>
-           
+            
+            <span>
+                @if (Auth::user()->rol == 'admin')
+                  <h3 class="mt-3 mb-4"><i class="fa-solid fa-user-tie"></i> Bienvenido, {{ Auth::user()->name }}</h3>
+                @else
+                  <h3 class="mt-3 mb-4"> <i class="fa-regular fa-user"></i> Bienvenido, {{ Auth::user()->name }}</h3>  
+                @endif
+              </span>
             <div class="row">
-
               <div class="col-4">
                 <div class="card w-55 bg-primary">
                   <div class="card-body">
