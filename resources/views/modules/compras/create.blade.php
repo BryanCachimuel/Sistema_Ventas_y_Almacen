@@ -15,20 +15,30 @@
           <div class="card-body">
             <h5 class="card-title">Compra Nueva de: <span style="color: #0000ff; font-size: 20px;">{{ $item->nombre }}</span></h5>
             
-            <form action="{{ route("compras.store") }}" method="POST">
+            <form action="{{ route("compras.store") }}" method="POST" autocomplete="off">
                 @csrf
                 <input type="text" hidden value="{{ $item->id }}" id="id" name="id">
 
-                <label for="cantidad">Cantidad de Producto</label>
-                <input type="text" class="form-control" name="cantidad" id="cantidad" required>
+                <div class="form-group row mb-2">
+                  <label for="cantidad" class="col-sm-2 col-form-label">Cantidad de Producto:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="text" class="form-control" name="cantidad" id="cantidad" required>
+                  </div>
+                </div>
 
-                <label for="precio_compra">Precio de Compra</label>
-                <input type="text" class="form-control" name="precio_compra" id="precio_compra" required>
+                <div class="form-group row mb-2">
+                  <label for="precio_compra" class="col-sm-2 col-form-label">Precio de Compra:</label>
+                  <div class="col-sm-10 col-form-label">
+                    <input type="text" class="form-control" name="precio_compra" id="precio_compra" required>
+                  </div>
+                </div>
 
-                <button class="btn btn-primary mt-3">Comprar</button>
-                <a href="{{ route("productos") }}" class="btn btn-info mt-3">
-                    Cancelar
-                </a>
+                <div class="text-end">
+                  <button class="btn btn-outline-primary mt-3"><i class="fa-solid fa-cart-shopping"></i> Comprar</button>
+                  <a href="{{ route("productos") }}" class="btn btn-outline-danger mt-3">
+                      <i class="fa-solid fa-circle-xmark"></i> Cancelar
+                  </a>
+                </div>
             </form>
           </div>
         </div>
