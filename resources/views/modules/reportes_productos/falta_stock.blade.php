@@ -47,9 +47,12 @@
                 </tr>
                 @endforeach
               </tbody>
+             
             </table>
             <!-- End Table with stripped rows -->
-
+             <div class="text-center mt-3">
+                <a href="{{ route('reportes_productos') }}" class="btn btn-outline-danger"><i class="fa-solid fa-circle-xmark"></i> Cancelar</a>
+             </div>
           </div>
         </div>
 

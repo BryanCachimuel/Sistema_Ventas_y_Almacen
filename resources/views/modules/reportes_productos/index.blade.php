@@ -22,7 +22,7 @@
 
             <div class="row">
               <div class="col text-end">
-                <a href="{{ route('reportes_productos.falta_stock') }}" class="btn btn-primary btn-sm">Productos con cantidad 1 o 0</a>
+                <a href="{{ route('reportes_productos.falta_stock') }}" class="btn btn-outline-primary"><i class='bx bx-basket'></i> Productos con cantidad 1 o 0</a>
               </div>
             </div>
 
