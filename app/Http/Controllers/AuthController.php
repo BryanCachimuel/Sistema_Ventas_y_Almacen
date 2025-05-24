@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function index(){
-        $titulo = "Login de Usuario";
-        return view("modules.auth.login", compact("titulo"));
+         $titulo = "Login de Usuario";
+       return view("modules.auth.login", compact("titulo")); 
     }
 
     public function logear(Request $request){
