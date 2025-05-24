@@ -8,9 +8,15 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <input type="text" name="id_usuario" id="id_usuario" hidden>
-              <label for="password">Contraseña Nueva</label>
-              <input type="password" class="form-control" name="password" id="password" required>
+             <div class="input-group mb-2">
+                <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                    <div class="form-floating">
+                    <input type="text" name="id_usuario" id="id_usuario" hidden>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required>
+                    <label for="password">Contraseña Nueva</label>
+                </div>
+              </div>
+
             </div>
             <div class="modal-footer">
               <button class="btn btn-outline-success"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
