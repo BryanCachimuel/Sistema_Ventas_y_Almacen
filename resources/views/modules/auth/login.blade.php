@@ -53,7 +53,7 @@
                         <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
                         <div class="form-floating">
                           <input type="password" class="form-control" name="password" id="password" placeholder="Username" required>
-                          <label for="password">Username</label>
+                          <label for="password">Contraseña</label>
                         </div>
                       </div>
 
